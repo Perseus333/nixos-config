@@ -1,7 +1,7 @@
 keys:
-  - &non age1z9z4v2f4853ytfds493qzq4wkxgyznngvdxgnu6j3khqhymxxqnsjkvlq4
+  - &pandora_host age13mtjhs9hk7zke0jd5zmlpgsr44ffxds8hlystq6yw8h9ql20mchs495h5f
 creation_rules:
-  - path_regex: secrets/non\.yaml
+  - path_regex: secrets/[^/]+\.yaml$
     key_groups:
       - age:
-        - *non
+        - *pandora_host

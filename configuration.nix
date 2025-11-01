@@ -19,8 +19,8 @@
   boot.supportedFilesystems = [ "zfs" ];
   boot.zfs.devNodes = "/dev/disk/by-id";
   
-  sops.defaultSopsFile = ./secrets/non.yaml;
-  sops.age.keyFile = "/var/lib/sops-nix/keys.txt";
+  sops.defaultSopsFile = ./secrets/pandora_host.yaml;
+  sops.age.sshKeyPaths = [ "/etc/ssh/ssh_host_ed25519_key" ];
 
   sops.secrets."wifi-pwd" = {};
 
