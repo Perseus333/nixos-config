@@ -20,7 +20,7 @@
   boot.zfs.devNodes = "/dev/disk/by-id";
   
   sops.defaultSopsFile = ./secrets/non.yaml;
-  sops.age.keyFile = "/home/non/.config/sops/age/keys.txt";
+  sops.age.keyFile = "/var/lib/sops-nix/keys.txt";
 
   sops.secrets."wifi-pwd" = {};
 
@@ -48,8 +48,9 @@
   };
 
   systemd.services.wpa_supplicant = {
-    after = [ "sops-nix.service" ];
-    wants = [ "sops-nix.service" ];
+    after = [ "sys-subsystem-net-devices-wlp4s0.device" ];
+    bindsTo = [ "sys-subsystem-net-devices-wlp4s0.device" ];
+    unitConfig.RequiresMountsFor = [ "/run/secrets/rendered" ];
   };
 
   
