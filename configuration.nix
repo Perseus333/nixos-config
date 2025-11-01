@@ -28,6 +28,7 @@
     content = ''
       psk=${config.sops.placeholder.wifi-pwd}
     '';
+    restartUnits = [ "wpa_supplicant.service" ];
   };
 
   networking = {
@@ -42,6 +43,11 @@
         pskRaw = "ext:psk";
       };
     };
+  };
+
+  systemd.services.wpa_supplicant = {
+    after = [ "sops-nix.service" ];
+    wants = [ "sops-nix.service" ];
   };
 
   networking.interfaces = {
