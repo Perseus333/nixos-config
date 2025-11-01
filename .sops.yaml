@@ -1,0 +1,7 @@
+keys:
+  - &non age1z9z4v2f4853ytfds493qzq4wkxgyznngvdxgnu6j3khqhymxxqnsjkvlq4
+creation_rules:
+  - path_regex: secrets/non\.yaml
+    key_groups:
+      - age:
+        - *non
