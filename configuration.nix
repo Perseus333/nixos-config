@@ -43,6 +43,8 @@
         pskRaw = "ext:psk";
       };
     };
+    useDHCP = true;
+    nameservers = [ "1.1.1.1" "8.8.8.8" ];
   };
 
   systemd.services.wpa_supplicant = {
@@ -50,23 +52,7 @@
     wants = [ "sops-nix.service" ];
   };
 
-  networking.interfaces = {
-    # Ethernet
-    enp1s0.ipv4.addresses = [{
-      address = "192.168.0.173";
-      prefixLength = 24;
-    }];
-
-    # Wireless
-    wlp4s0.ipv4.addresses = [{
-      address = "192.168.0.174";
-      prefixLength = 24;
-    }];
-  };
-
-  networking.defaultGateway = "192.168.0.1";
-  networking.nameservers = [ "1.1.1.1" "8.8.8.8" ];
-
+  
   # Set your time zone.
   time.timeZone = "Europe/London";
 
