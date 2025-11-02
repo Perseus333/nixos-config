@@ -15,24 +15,30 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
-  outputs = inputs@{ 
+  outputs = { 
     self,
     nixpkgs,
     sops-nix,
     home-manager,
     ... 
-  }: {
-    nixosConfigurations.pandora = nixpkgs.lib.nixosSystem {
-      modules = [
-        ./configuration.nix
-        sops-nix.nixosModules.sops
-        home-manager.nixosModules.home-manager {
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
-          home-manager.users.root = import ./home.nix;
-          home-manager.users.non = import ./home.nix;
-        }
-      ];
+  }inputs@: {
+    let
+      system = "x86_64-linux";
+      pkgs = nixpkgs.legacyPackages.${system};
+    in {
+      nixosConfigurations.pandora = nixpkgs.lib.nixosSystem {
+        specialArgs = { inherit inputs; };
+        modules = [
+          ./configuration.nix
+          sops-nix.nixosModules.sops
+          home-manager.nixosModules.home-manager {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users.root = import ./home.nix;
+            home-manager.users.non = import ./home.nix;
+          }
+        ];
+      };
     };
   };
 }
