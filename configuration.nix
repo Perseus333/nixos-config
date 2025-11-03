@@ -110,15 +110,18 @@
   # Enable the OpenSSH daemon.
   services.openssh = {
     enable = true;
+    ports = [ 4684 ];
     settings = {
-      PermitRootLogin = "yes";
+      PermitRootLogin = "no";
       PasswordAuthentication = false;
+      AllowUsers = [ "non@192.168.0.0/16" ];
+      KbdInteractiveAuthentication = false; # redundant
     };
   };
 
   # Open ports in the firewall.
   networking.firewall.enable = true;
-  networking.firewall.allowedTCPPorts = [ 22 ];
+  networking.firewall.allowedTCPPorts = [ 4684 ];
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
