@@ -80,6 +80,7 @@
   users.users.non = {
     isNormalUser = true;
     extraGroups = [ "wheel" ];
+    initialPassword = "123456";
   };
 
   # You can use https://search.nixos.org/ to find more packages (and options).
