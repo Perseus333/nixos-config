@@ -114,9 +114,15 @@
     settings = {
       PermitRootLogin = "no";
       PasswordAuthentication = false;
-      AllowUsers = [ "non@192.168.0.0/16" ];
+      AllowUsers = [ "non@192.168.0.0/16" ]; # local IPs
       KbdInteractiveAuthentication = false; # redundant
     };
+  };
+
+  services.fail2ban = {
+    enable = true;
+    ignoreIP = [ "192.168.0.0/16" ]; # local IPs
+    bantime-increment.enable = true;
   };
 
   # Open ports in the firewall.
