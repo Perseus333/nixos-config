@@ -111,7 +111,7 @@
   #   enableSSHSupport = true;
   # };
 
-  service.zfs = {
+  services.zfs = {
     autoSnapshot = {
       # Enables keeping 4 15min snapshots, 24 of 1h intervals, 7 of 1d, etc.
       enable = true;
