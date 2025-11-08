@@ -82,6 +82,9 @@
     extraGroups = [ "wheel" ];
     initialPassword = "123456";
   };
+  
+  # Clears some storage
+  nix.optimise.automatic = true;
 
   # You can use https://search.nixos.org/ to find more packages (and options).
   environment.systemPackages = with pkgs; [
