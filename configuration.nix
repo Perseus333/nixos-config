@@ -131,14 +131,20 @@
     settings = {
       PermitRootLogin = "no";
       PasswordAuthentication = false;
-      AllowUsers = [ "non@192.168.0.0/16" ]; # local IPs
+      AllowUsers = [
+        "non@192.168.0.0/16"       # local  IPv4
+        "non@fd7b:323:3ba9::/48"   # local  IPv6
+      ];
       KbdInteractiveAuthentication = false; # redundant
     };
   };
 
   services.fail2ban = {
     enable = true;
-    ignoreIP = [ "192.168.0.0/16" ]; # local IPs
+    ignoreIP = [
+      "192.168.0.0/16"     # local  IPv4
+      "fd7b:323:3ba9::/48" # local  IPv6
+    ];
     bantime-increment.enable = true;
   };
 
