@@ -75,16 +75,15 @@
   #   useXkbConfig = true; # use xkb.options in tty.
   # };
 
-  # Enable CUPS to print documents.
-  # services.printing.enable = true;
-
-  # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.non = {
     isNormalUser = true;
     extraGroups = [ "wheel" ];
     initialPassword = "123456";
+    openssh.authorizedKeys.keys = [
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAII3F+9i74EF52Ywm+aYNxz7C/OyDkOdUD4sFeVbIgluW perseus@fedora"
+    ];
   };
-  
+
   # Clears some storage
   nix.optimise.automatic = true;
 
@@ -143,6 +142,8 @@
         "non@fd7b:323:3ba9::/48"   # local  IPv6
       ];
       KbdInteractiveAuthentication = false; # redundant
+      # Logs all connection attempts
+      LogLevel = "VERBOSE";
     };
   };
 
@@ -155,9 +156,20 @@
     bantime-increment.enable = true;
   };
 
+  # Simple security logs
+  services.journald = {
+    # Caps Journald to use up to 500 MB
+    extraConfig = ''
+      SystemMaxUse=500M
+    '';
+  };
+
   # Open ports in the firewall.
-  networking.firewall.enable = true;
-  networking.firewall.allowedTCPPorts = [ 4684 ];
+  networking.firewall = {
+    enable = true;
+    allowedTCPPorts = [ 4684 ];
+    logRefusedConnections = true;
+  };
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
