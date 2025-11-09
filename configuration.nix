@@ -84,6 +84,9 @@
     ];
   };
 
+  # Disable password login for root
+  users.users.root.hashedPassword = "!";
+
   # Clears some storage
   nix.optimise.automatic = true;
 
@@ -104,13 +107,10 @@
     dig
   ];
 
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # };
+  # Doesn't ask for sudo password for 30 minutes
+  security.sudo.extraConfig = ''
+    Defaults timestamp_timeout=30
+  '';
 
   services.zfs = {
     autoSnapshot = {
