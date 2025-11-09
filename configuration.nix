@@ -19,6 +19,8 @@
 
   boot.supportedFilesystems = [ "zfs" ];
   boot.zfs.devNodes = "/dev/disk/by-id";
+  # Max 4 GB for ARC
+  boot.kernelParams = [ "zfs.zfs_arc_max=4294967296" ];
   
   # Secret Management
   sops.defaultSopsFile = ./secrets/pandora_host.yaml;
@@ -118,9 +120,14 @@
       # --utc to prevent name conflicts
       flags = "-k -p --utc";
     };
+    # checks data integrity
     autoScrub = {
       enable = true;
       interval = "monthly";
+    };
+    # Runs zpool trim weekly
+    trim = {
+      enable = true;
     };
   };
 
