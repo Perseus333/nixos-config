@@ -11,6 +11,8 @@
     ../../modules/networking/ssh.nix
     ../../modules/networking/wireless.nix
     ../../modules/networking/fail2ban.nix
+    ../../modules/networking/wireguard.nix
+    ../../modules/networking/inadyn.nix
     ../../modules/users/root.nix
     ../../modules/users/non.nix
   ];
@@ -39,6 +41,7 @@
     sops
     home-manager
     dig
+    wireguard-tools
   ];
 
   # Simple security logs

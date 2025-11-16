@@ -8,7 +8,7 @@ creation_rules:
       - age:
         - *non
         - *pandora_host
-  - path_regex: secrets/services/[^/]+\.yaml$
+  - path_regex: secrets/services/[^/]+\.(yaml|conf)$
     key_groups:
       - age:
         - *non

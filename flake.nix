@@ -23,7 +23,7 @@
       nixosConfigurations.pandora = nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs; };
         modules = [
-          ./systems/pandora/default.nix
+          ./systems/pandora
           sops-nix.nixosModules.sops
           
           # SOPS configuration

@@ -8,5 +8,18 @@
       "fd7b:323:3ba9::/48"
     ];
     bantime-increment.enable = true;
+    jails = {
+      wireguard = {
+        enabled = true;
+        settings = {
+          filter = "wg0";
+          logpath = "/var/log/messages";
+          maxretry = 3;
+          bantime = 3600;
+          findtime = 600;
+        };
+      };
+    };
   };
 }
+
