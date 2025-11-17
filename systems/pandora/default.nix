@@ -13,6 +13,7 @@
     ../../modules/networking/fail2ban.nix
     ../../modules/networking/wireguard.nix
     ../../modules/networking/inadyn.nix
+    ../../modules/networking/unbound.nix
     ../../modules/users/root.nix
     ../../modules/users/non.nix
   ];
