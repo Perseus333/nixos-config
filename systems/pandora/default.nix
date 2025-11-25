@@ -17,6 +17,7 @@
     ../../modules/networking/inadyn.nix
     ../../modules/networking/unbound.nix
     ../../modules/services/jellyfin.nix
+    ../../modules/services/samba.nix
     ../../modules/users/root.nix
     ../../modules/users/non.nix
   ];
