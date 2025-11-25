@@ -38,8 +38,8 @@
           home-manager.nixosModules.home-manager {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.users.root = import ./home/non;
             home-manager.users.non = import ./home/non;
+            home-manager.users.root = import ./home/non;
           }
         ];
       };
