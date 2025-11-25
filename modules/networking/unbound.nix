@@ -24,10 +24,10 @@
         hide-identity = true;
         hide-version = true;
         local-zone = [
-          "perseuslynx.dev. static"
+          "perseuslynx.dev. redirect"
         ];
         local-data = [
-          ''"placeholder.perseuslynx.dev. IN A 10.8.0.1"''
+          ''"perseuslynx.dev. IN A 10.8.0.1"''
         ];
         verbosity = 3;
       };

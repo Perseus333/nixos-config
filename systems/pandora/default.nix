@@ -7,6 +7,8 @@
     ../../modules/base/boot.nix
     ../../modules/base/security.nix
     ../../modules/base/zfs.nix
+    ../../modules/networking/acme.nix
+    ../../modules/networking/caddy.nix
     ../../modules/networking/firewall.nix
     ../../modules/networking/ssh.nix
     ../../modules/networking/wireless.nix
