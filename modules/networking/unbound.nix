@@ -6,9 +6,15 @@
     settings = {
       server = {
         # TODO: add DoH
-        interface = [ "127.0.0.1" "10.8.0.1" ];
+        interface = [ 
+          # "127.0.0.1"
+          "10.8.0.1"
+        ];
         port = 53;
-        access-control = [ "127.0.0.1/32 allow" "10.8.0.0/24 allow" ];
+        access-control = [ 
+          # "127.0.0.1/32 allow"
+          "10.8.0.0/24 allow"
+        ];
         root-hints = "${pkgs.dns-root-data}/root.hints";
         harden-glue = true;
         harden-dnssec-stripped = true;
