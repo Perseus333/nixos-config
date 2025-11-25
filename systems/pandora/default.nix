@@ -14,7 +14,7 @@
     ../../modules/networking/wireless.nix
     ../../modules/networking/fail2ban.nix
     ../../modules/networking/wireguard.nix
-    ../../modules/networking/inadyn.nix
+    ../../modules/networking/cloudflare-dyndns.nix
     ../../modules/networking/unbound.nix
     ../../modules/services/jellyfin.nix
     ../../modules/services/samba.nix
