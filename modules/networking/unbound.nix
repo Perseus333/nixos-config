@@ -29,7 +29,6 @@
         local-data = [
           ''"perseuslynx.dev. IN A 10.8.0.1"''
         ];
-        verbosity = 3;
       };
       forward-zone = {
         name = ".";

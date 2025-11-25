@@ -6,6 +6,7 @@
     ../../modules/base/nix.nix
     ../../modules/base/boot.nix
     ../../modules/base/security.nix
+    ../../modules/base/users.nix
     ../../modules/base/zfs.nix
     ../../modules/networking/acme.nix
     ../../modules/networking/caddy.nix
@@ -18,8 +19,6 @@
     ../../modules/networking/unbound.nix
     ../../modules/services/jellyfin.nix
     ../../modules/services/samba.nix
-    ../../modules/users/root.nix
-    ../../modules/users/non.nix
   ];
 
   # Host identification
