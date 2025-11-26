@@ -5,7 +5,10 @@
   services.cloudflare-dyndns = {
     enable = true;
     apiTokenFile = config.sops.secrets."cloudflare-dns-token-plain".path;
-    domains = [ "dyn.perseuslynx.dev" ];
+    domains = [
+      "dyn.perseuslynx.dev"
+      "git.perseuslynx.dev"
+    ];
     ipv4 = true;
     ipv6 = false;
   };

@@ -7,6 +7,10 @@
         reverse_proxy 10.8.0.1:8096
         tls ${config.security.acme.certs."perseuslynx.dev".directory}/cert.pem ${config.security.acme.certs."perseuslynx.dev".directory}/key.pem
     '';
+    #virtualHosts."git.perseuslynx.dev".extraConfig = ''
+    # reverse_proxy 127.0.0.1:3000
+    #  tls ${config.security.acme.certs."perseuslynx.dev".directory}/cert.pem ${config.security.acme.certs."perseuslynx.dev".directory}/key.pem
+    #'';
   };
 
   systemd.services.acme-perseuslynx-dev = {

@@ -17,6 +17,7 @@
     ../../modules/networking/wireguard.nix
     ../../modules/networking/cloudflare-dyndns.nix
     ../../modules/networking/unbound.nix
+    ../../modules/services/forgejo.nix
     ../../modules/services/jellyfin.nix
     ../../modules/services/samba.nix
   ];
@@ -46,6 +47,7 @@
     home-manager
     dig
     wireguard-tools
+    btop
   ];
 
   # Simple security logs

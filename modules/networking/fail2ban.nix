@@ -8,6 +8,18 @@
       "fd7b:323:3ba9::/48"
     ];
     bantime-increment.enable = true;
+    jails = {
+      forgejo = {
+        enabled = true;
+        settings = {
+          filter = "forgejo-auth";
+          logPath = "/var/log/caddy/access.log";
+          maxRetry = 3;
+          bantime = "3600";
+          findtime = "600";
+        };
+      };
+    };
   };
 }
 
