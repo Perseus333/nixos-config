@@ -8,14 +8,13 @@
     ../../modules/base/security.nix
     ../../modules/base/users.nix
     ../../modules/base/zfs.nix
-    ../../modules/networking/acme.nix
     ../../modules/networking/caddy.nix
+    ../../modules/networking/cloudflared.nix
     ../../modules/networking/firewall.nix
     ../../modules/networking/ssh.nix
     ../../modules/networking/wireless.nix
     ../../modules/networking/fail2ban.nix
     ../../modules/networking/wireguard.nix
-    ../../modules/networking/cloudflare-dyndns.nix
     ../../modules/networking/unbound.nix
     ../../modules/services/forgejo.nix
     ../../modules/services/jellyfin.nix
@@ -48,6 +47,7 @@
     dig
     wireguard-tools
     btop
+    cloudflared
   ];
 
   # Simple security logs
