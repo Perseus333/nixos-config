@@ -4,7 +4,6 @@
   services.forgejo = {
     enable = true;
     database.type = "postgres";
-    # Enable support for Git Large File Storage
     lfs.enable = true;
     settings = {
       server = {
@@ -13,12 +12,18 @@
         ROOT_URL = "https://git.perseuslynx.dev/"; 
         HTTP_PORT = 3000;
       };
+      DEFAULT.APP_NAME = "Hefesto";
       # You can temporarily allow registration to create an admin user.
-      service.DISABLE_REGISTRATION = true; 
-      # Add support for actions, based on act: https://github.com/nektos/act
-      # actions = {
-      #   ENABLED = true;
-      #   DEFAULT_ACTIONS_URL = "github";
+      service.DISABLE_REGISTRATION = true;
+      session = {
+        COOKIE_SECURE = true;
+        # Sessions last for 1 week
+        SESSION_LIFE_TIME = 86400 * 7;
+      };
+      actions = {
+        ENABLED = true;
+        DEFAULT_ACTIONS_URL = "https://code.forgejo.org";
+      };
     };
   };
 }

@@ -48,6 +48,8 @@
     wireguard-tools
     btop
     cloudflared
+    forgejo
+    forgejo-cli
   ];
 
   # Simple security logs
