@@ -3,15 +3,8 @@
 {
   services.samba = {
     enable = true;
-    securityType = "user";
     openFirewall = true;
     usershares.enable = true;
-    shares.media = {
-      path = "/srv/media";
-      browseable = "yes";
-      writable = "yes";
-      "valid users" = "non";
-    };
     settings = {
       global = {
         "workgroup" = "WORKGROUP";
