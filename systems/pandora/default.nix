@@ -12,12 +12,15 @@
     ../../modules/networking/cloudflared.nix
     ../../modules/networking/firewall.nix
     ../../modules/networking/ssh.nix
+    ../../modules/networking/ethernet.nix
     ../../modules/networking/wireless.nix
     ../../modules/networking/fail2ban.nix
     ../../modules/networking/wireguard.nix
     ../../modules/networking/unbound.nix
+    ../../modules/services/authelia.nix
     ../../modules/services/forgejo.nix
     ../../modules/services/jellyfin.nix
+    ../../modules/services/open-webui.nix
     ../../modules/services/samba.nix
   ];
 
@@ -41,6 +44,7 @@
     iputils
     git
     tree
+    tmux
     age
     sops
     home-manager
@@ -50,6 +54,8 @@
     cloudflared
     forgejo
     forgejo-cli
+    authelia
+    open-webui
   ];
 
   # Simple security logs

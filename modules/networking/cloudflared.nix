@@ -27,8 +27,8 @@
     tunnels = {
       "pandora-main" = {
         ingress = {
-          "media.perseuslynx.dev" = "http://10.8.0.1:8096";
           "git.perseuslynx.dev"   = "http://localhost:3000";
+          "auth.perseuslynx.dev"  = "http://localhost:9091";
         };
         default = "http_status:404";
         credentialsFile = config.sops.secrets."cloudflared-creds".path;
