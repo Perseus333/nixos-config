@@ -8,6 +8,7 @@
     ../../modules/base/security.nix
     ../../modules/base/users.nix
     ../../modules/base/zfs.nix
+    ../../modules/networking/acme.nix
     ../../modules/networking/caddy.nix
     ../../modules/networking/cloudflared.nix
     ../../modules/networking/firewall.nix

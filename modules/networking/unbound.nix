@@ -24,12 +24,13 @@
         hide-identity = true;
         hide-version = true;
         local-zone = [
-          "perseuslynx.dev. redirect"
-          "internal. static"
+          "perseuslynx.dev. transparent"
         ];
         local-data = [
-          ''"perseuslynx.dev. IN A 10.8.0.1"''
-          ''"ai.internal. IN A 10.8.0.1"''
+          ''"git.perseuslynx.dev. IN A 10.8.0.1"''
+          ''"media.perseuslynx.dev. IN A 10.8.0.1"''
+          ''"auth.perseuslynx.dev. IN A 10.8.0.1"''
+          ''"ai.perseuslynx.dev. IN A 10.8.0.1"''
         ];
       };
       forward-zone = {
