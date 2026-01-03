@@ -4,6 +4,7 @@
   sops.secrets.wireguard-private-key = {};
   sops.secrets.wireguard-laptop-preshared-key = {};
   sops.secrets.wireguard-tablet-preshared-key = {};
+  sops.secrets.wireguard-phone1-preshared-key = {};
 
   networking.wireguard.interfaces = {
     wg0 = {
@@ -23,6 +24,12 @@
           publicKey = "lAXhffOb+caJ0nvrqT4jzc5RttV+7yBtVplIiosOmWs=";
           presharedKeyFile = config.sops.secrets.wireguard-tablet-preshared-key.path;
           allowedIPs = [ "10.8.0.3/32" ];
+        }
+        {
+          name = "lineageos-phone";
+          publicKey = "N4Nt8s9iMQEPR77IS0OdvyCFp3hbWpqh4rVlbYMga0U=";
+          presharedKeyFile = config.sops.secrets.wireguard-phone1-preshared-key.path;
+          allowedIPs = [ "10.8.0.4/32" ];
         }
       ];
     };
