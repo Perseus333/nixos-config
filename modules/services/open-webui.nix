@@ -3,9 +3,15 @@
 {
   services.open-webui = {
     enable = true;
-    host = "10.8.0.1";
+    host = "127.0.0.1";
     port = 1212;
-    openFirewall = true;
   };
 
+    services.ollama = {
+    enable = true;
+    acceleration = "rocm";
+    rocmOverrideGfx = "9.0.0"; 
+  };
+
+  users.users.non.extraGroups = [ "video" "render" ];
 }

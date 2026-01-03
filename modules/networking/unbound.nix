@@ -25,9 +25,11 @@
         hide-version = true;
         local-zone = [
           "perseuslynx.dev. redirect"
+          "internal. static"
         ];
         local-data = [
           ''"perseuslynx.dev. IN A 10.8.0.1"''
+          ''"ai.internal. IN A 10.8.0.1"''
         ];
       };
       forward-zone = {
