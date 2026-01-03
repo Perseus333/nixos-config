@@ -20,6 +20,7 @@
     ../../modules/networking/unbound.nix
     ../../modules/services/authelia.nix
     ../../modules/services/forgejo.nix
+    ../../modules/services/immich.nix
     ../../modules/services/jellyfin.nix
     ../../modules/services/open-webui.nix
     ../../modules/services/samba.nix
@@ -57,6 +58,8 @@
     forgejo-cli
     authelia
     open-webui
+    immich
+    immich-cli
   ];
 
   # Simple security logs
