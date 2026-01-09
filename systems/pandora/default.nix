@@ -23,6 +23,7 @@
     ../../modules/services/immich.nix
     ../../modules/services/jellyfin.nix
     ../../modules/services/open-webui.nix
+    ../../modules/services/radicale.nix
     ../../modules/services/samba.nix
     ../../modules/services/searx.nix
     ../../modules/services/vaultwarden.nix

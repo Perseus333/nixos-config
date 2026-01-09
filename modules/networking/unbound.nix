@@ -34,6 +34,7 @@
           ''"img.perseuslynx.dev. IN A 10.8.0.1"''
           ''"search.perseuslynx.dev. IN A 10.8.0.1"''
           ''"vault.perseuslynx.dev. IN A 10.8.0.1"''
+          ''"cal.perseuslynx.dev. IN A 10.8.0.1"''
         ];
       };
       forward-zone = {
