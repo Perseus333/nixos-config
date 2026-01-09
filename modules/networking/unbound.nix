@@ -32,6 +32,7 @@
           ''"auth.perseuslynx.dev. IN A 10.8.0.1"''
           ''"ai.perseuslynx.dev. IN A 10.8.0.1"''
           ''"img.perseuslynx.dev. IN A 10.8.0.1"''
+          ''"search.perseuslynx.dev. IN A 10.8.0.1"''
         ];
       };
       forward-zone = {

@@ -31,5 +31,10 @@
       useACMEHost = "perseuslynx.dev";
       extraConfig = "reverse_proxy 127.0.0.1:2283";
     };
+
+    virtualHosts."search.perseuslynx.dev" = {
+      useACMEHost = "perseuslynx.dev";
+      extraConfig = "reverse_proxy 127.0.0.1:8888";
+    };
   };
 }

@@ -24,6 +24,7 @@
     ../../modules/services/jellyfin.nix
     ../../modules/services/open-webui.nix
     ../../modules/services/samba.nix
+    ../../modules/services/searx.nix
   ];
 
   # Host identification
