@@ -2,9 +2,7 @@
 
 {
   sops.secrets.wireguard-private-key = {};
-  sops.secrets.wireguard-laptop-preshared-key = {};
-  sops.secrets.wireguard-tablet-preshared-key = {};
-  sops.secrets.wireguard-phone1-preshared-key = {};
+  sops.secrets.wireguard-enodia-preshared-key = {};
 
   networking.wireguard.interfaces = {
     wg0 = {
@@ -14,22 +12,12 @@
       privateKeyFile = config.sops.secrets.wireguard-private-key.path;
       peers = [
         {
-          name = "fedora-laptop";
-          publicKey = "DG7QHUUJVB2WHKYkWJ7XRBaC4D4hubtJ2PBiq/y5slw=";
-          presharedKeyFile = config.sops.secrets.wireguard-laptop-preshared-key.path;
-          allowedIPs = [ "10.8.0.2/32" ];
-        }
-        {
-          name = "lineageos-tablet";
-          publicKey = "lAXhffOb+caJ0nvrqT4jzc5RttV+7yBtVplIiosOmWs=";
-          presharedKeyFile = config.sops.secrets.wireguard-tablet-preshared-key.path;
-          allowedIPs = [ "10.8.0.3/32" ];
-        }
-        {
-          name = "lineageos-phone";
-          publicKey = "N4Nt8s9iMQEPR77IS0OdvyCFp3hbWpqh4rVlbYMga0U=";
-          presharedKeyFile = config.sops.secrets.wireguard-phone1-preshared-key.path;
-          allowedIPs = [ "10.8.0.4/32" ];
+          name = "enodia-vps";
+          publicKey = "O2MJwrFzfS/P0UQz92vkxFzOu4VlsVJ7V+GFmdesj3Y=";
+          presharedKeyFile = config.sops.secrets.wireguard-enodia-preshared-key.path;
+          allowedIPs = [ "10.8.0.0/24" ];
+          endpoint = "87.106.83.12:1558";
+          persistentKeepalive = 25;
         }
       ];
     };

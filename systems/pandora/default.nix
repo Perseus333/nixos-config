@@ -63,6 +63,7 @@
     open-webui
     immich
     immich-cli
+    tcpdump
   ];
 
   # Simple security logs
