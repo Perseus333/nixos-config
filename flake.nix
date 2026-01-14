@@ -8,11 +8,6 @@
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    
-    home-manager = {
-      url = "github:nix-community/home-manager/release-25.05";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
   outputs = { self, nixpkgs, sops-nix, home-manager, ... }@inputs:
@@ -23,7 +18,7 @@
       nixosConfigurations.pandora = nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs; };
         modules = [
-          ./systems/pandora
+          ./hosts/pandora
           sops-nix.nixosModules.sops
           
           # SOPS configuration
@@ -33,14 +28,8 @@
             sops.age.sshKeyPaths = [ "/etc/ssh/ssh_host_ed25519_key" ];
             sops.age.generateKey = true;
           }
-          
-          # Home Manager integration
-          home-manager.nixosModules.home-manager {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.users.non = import ./home/non;
-          }
         ];
       };
     };
+  }
 }
