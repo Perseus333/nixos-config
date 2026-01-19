@@ -13,7 +13,7 @@
       peers = [
         {
           name = "enodia-vps";
-          publicKey = "O2MJwrFzfS/P0UQz92vkxFzOu4VlsVJ7V+GFmdesj3Y=";
+          publicKey = "6Sf+v5/ZpUFXK4BKaz5GrxafGe3V2VXkSPpAKs1seC8=";
           presharedKeyFile = config.sops.secrets.wireguard-enodia-preshared-key.path;
           allowedIPs = [ "10.8.0.0/24" ];
           endpoint = "87.106.83.12:1558";
