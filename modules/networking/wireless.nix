@@ -26,8 +26,8 @@
   };
 
   systemd.services.wpa_supplicant = {
-    after = [ "sys-subsystem-net-devices-wlp4s0.device" ];
-    bindsTo = [ "sys-subsystem-net-devices-wlp4s0.device" ];
+    after = [ "sys-subsystem-net-devices-wlp5s0.device" ];
+    bindsTo = [ "sys-subsystem-net-devices-wlp5s0.device" ];
     unitConfig.RequiresMountsFor = [ "/run/secrets/rendered" ];
   };
 }
