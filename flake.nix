@@ -8,9 +8,18 @@
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    nix-minecraft.url = "github:Infinidoge/nix-minecraft";
   };
 
-  outputs = { self, nixpkgs, sops-nix, home-manager, ... }@inputs:
+  
+
+  outputs = {
+    self,
+    nixpkgs,
+    sops-nix,
+    nix-minecraft,
+    ... }@inputs:
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
@@ -27,6 +36,11 @@
             sops.defaultSopsFormat = "yaml";
             sops.age.sshKeyPaths = [ "/etc/ssh/ssh_host_ed25519_key" ];
             sops.age.generateKey = true;
+          }
+
+          nix-minecraft.nixosModules.minecraft-servers
+          {
+            nixpkgs.overlays = [ inputs.nix-minecraft.overlay ];
           }
         ];
       };

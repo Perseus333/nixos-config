@@ -21,8 +21,9 @@
     ../../modules/services/authelia.nix
     ../../modules/services/forgejo.nix
     ../../modules/services/immich.nix
-    ../../modules/services/jellyfin.nix
     ../../modules/services/open-webui.nix
+    ../../modules/services/jellyfin.nix
+    ../../modules/services/minecraft.nix
     ../../modules/services/radicale.nix
     ../../modules/services/samba.nix
     ../../modules/services/searx.nix
