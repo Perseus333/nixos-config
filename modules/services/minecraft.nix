@@ -20,6 +20,9 @@
       whitelist = {
         Perseus_Lynx = "9ace5055-8f28-4fb1-96f7-b9d8867d56be";
       };
+      operators = {
+        Perseus_Lynx = "9ace5055-8f28-4fb1-96f7-b9d8867d56be";
+      };
     };
   };
 
