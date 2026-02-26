@@ -28,7 +28,8 @@
       "pandora-main" = {
         ingress = {
           "git.perseuslynx.dev"   = "http://localhost:3000";
-          "auth.perseuslynx.dev"  = "http://localhost:9091";
+          "files.perseuslynx.dev"   = "http://localhost:57790";
+          #"auth.perseuslynx.dev"  = "http://localhost:9091";
         };
         default = "http_status:404";
         credentialsFile = config.sops.secrets."cloudflared-creds".path;

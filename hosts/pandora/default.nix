@@ -27,6 +27,7 @@
     ../../modules/services/radicale.nix
     ../../modules/services/samba.nix
     ../../modules/services/searx.nix
+    ../../modules/services/sftpgo.nix
     ../../modules/services/vaultwarden.nix
   ];
 
