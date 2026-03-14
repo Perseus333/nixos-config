@@ -30,4 +30,9 @@
     bindsTo = [ "sys-subsystem-net-devices-wlp5s0.device" ];
     unitConfig.RequiresMountsFor = [ "/run/secrets/rendered" ];
   };
+  
+  # required by syncthing
+  boot.kernel.sysctl = {
+    "net.core.rmem_max" = 7340032;
+  };
 }
