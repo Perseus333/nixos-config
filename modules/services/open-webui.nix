@@ -9,8 +9,14 @@
 
   services.ollama = {
     enable = true;
-    acceleration = "rocm";
-    rocmOverrideGfx = "9.0.0"; 
+    package = pkgs.ollama-vulkan;
+    environmentVariables = {
+      OLLAMA_VULKAN = "1";
+    };
+  };
+
+  hardware.graphics = {
+    enable = true;
   };
 
   users.users.non.extraGroups = [ "video" "render" ];
