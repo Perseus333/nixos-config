@@ -19,6 +19,7 @@
     ../../modules/networking/wireguard.nix
     ../../modules/networking/unbound.nix
     ../../modules/services/authelia.nix
+    ../../modules/services/backrest.nix
     ../../modules/services/forgejo.nix
     ../../modules/services/immich.nix
     ../../modules/services/open-webui.nix
@@ -67,6 +68,7 @@
     immich
     immich-cli
     tcpdump
+    backrest
   ];
 
   # Simple security logs
