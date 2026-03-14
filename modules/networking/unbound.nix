@@ -38,6 +38,7 @@
           ''"files.perseuslynx.dev. IN A 10.8.0.1"''
 	  ''"sync.perseuslynx.dev. IN A 10.8.0.1"''
 	  ''"bak.perseuslynx.dev. IN A 10.8.0.1"''
+	  ''"home.perseuslynx.dev. IN A 10.8.0.1"''
         ];
       };
       forward-zone = {

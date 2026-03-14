@@ -21,6 +21,7 @@
     ../../modules/services/authelia.nix
     ../../modules/services/backrest.nix
     ../../modules/services/forgejo.nix
+    ../../modules/services/glance.nix
     ../../modules/services/immich.nix
     ../../modules/services/open-webui.nix
     ../../modules/services/jellyfin.nix
