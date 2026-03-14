@@ -51,6 +51,7 @@
         ban_time_on_fail = 5;
         max_ban_time_on_fail = 120;
         favicon_resolver = "duckduckgo";
+	formats = [ "html" "json" ];
       };
 
       # Server configuration
