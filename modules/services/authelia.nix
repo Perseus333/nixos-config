@@ -36,7 +36,12 @@
       };
 
       session = {
-        domain = "perseuslynx.dev"; # Root domain
+	  cookies = [
+	    {
+	      domain = "perseuslynx.dev";
+	      authelia_url = "https://auth.perseuslynx.dev";
+	    }
+	  ];
         expiration = "1h";
         inactivity = "5m";
       };
@@ -57,12 +62,12 @@
 
   # Generate secrets on first run
   system.activationScripts.authelia-secrets = ''
-    mkdir -p /var/lib/authelia
-    if [ ! -f /var/lib/authelia/jwt_secret ]; then
-      ${pkgs.openssl}/bin/openssl rand -hex 32 > /var/lib/authelia/jwt_secret
+    mkdir -p /var/lib/authelia-main
+    if [ ! -f /var/lib/authelia-main/jwt_secret ]; then
+      ${pkgs.openssl}/bin/openssl rand -hex 32 > /var/lib/authelia-main/jwt_secret
     fi
-    if [ ! -f /var/lib/authelia/storage_encryption_key ]; then
-      ${pkgs.openssl}/bin/openssl rand -hex 32 > /var/lib/authelia/storage_encryption_key
+    if [ ! -f /var/lib/authelia-main/storage_encryption_key ]; then
+      ${pkgs.openssl}/bin/openssl rand -hex 32 > /var/lib/authelia-main/storage_encryption_key
     fi
   '';
 }
