@@ -9,14 +9,23 @@
     ];
     bantime-increment.enable = true;
     jails = {
+      sshd = {
+        enabled = true;
+        settings = {
+          filter = "sshd";
+          maxRetry = 3;
+          bantime = "1h";
+          findtime = "10m";
+        };
+      };
       forgejo = {
         enabled = true;
         settings = {
           filter = "forgejo-auth";
           logPath = "/var/log/caddy/access.log";
           maxRetry = 3;
-          bantime = "3600";
-          findtime = "600";
+          bantime = "1h";
+          findtime = "10m";
         };
       };
     };

@@ -12,7 +12,7 @@
     settings = {
       theme = "auto";
       default_2fa_method = "totp";
-      server.address = "0.0.0.0:9091";      
+      server.address = "127.0.0.1:9091";      
 
       log.level = "info";
 

@@ -8,7 +8,6 @@
   };
   services.syncthing = {
     enable = true;
-    openDefaultPorts = true;
     settings.gui = {
       user = "perseus";
       passwordFile = config.sops.secrets."syncthing-pwd".path;
