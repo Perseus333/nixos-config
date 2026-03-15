@@ -5,27 +5,54 @@
     enable = true;
     settings = {
       server = {
-        # TODO: add DoH
         interface = [ 
-          # "127.0.0.1"
+          "127.0.0.1"
           "10.8.0.1"
         ];
+
         port = 53;
+
         access-control = [ 
-          # "127.0.0.1/32 allow"
+          "127.0.0.1/32 allow"
           "10.8.0.0/24 allow"
         ];
+
         root-hints = "${pkgs.dns-root-data}/root.hints";
-        harden-glue = true;
+        
+	# Security/DNNSEC
+	harden-glue = true;
         harden-dnssec-stripped = true;
-        prefetch = true;
-        edns-buffer-size = 1232;
-        ratelimit = 100;
+	harden-below-nxdomain = true;
+	harden-algo-downgrade = false;
+        aggressive-nsec = true;
+        val-clean-additional = true;
+
+	use-caps-for-id = true;
+        deny-any = true;
+        do-not-query-localhost = true;
+        private-address = [
+          "10.0.0.0/8"
+          "172.16.0.0/12"
+          "192.168.0.0/16"
+          "169.254.0.0/16"
+          "fd00::/8"
+          "fe80::/10"
+        ];
+ 
+	# Privacy
+	qname-minimisation = true;
         hide-identity = true;
         hide-version = true;
-        local-zone = [
+        
+	# Performance
+	prefetch = true;
+        edns-buffer-size = 1232;
+        ratelimit = 100;
+       
+	local-zone = [
           "perseuslynx.dev. transparent"
         ];
+
         local-data = [
           ''"git.perseuslynx.dev. IN A 10.8.0.1"''
           ''"media.perseuslynx.dev. IN A 10.8.0.1"''
