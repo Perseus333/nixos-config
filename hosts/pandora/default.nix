@@ -9,6 +9,7 @@
     ../../modules/base/users.nix
     ../../modules/base/zfs.nix
     ../../modules/networking/acme.nix
+    ../../modules/networking/blocklist.nix
     ../../modules/networking/caddy.nix
     ../../modules/networking/cloudflared.nix
     ../../modules/networking/firewall.nix
