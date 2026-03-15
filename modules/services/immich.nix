@@ -1,5 +1,12 @@
-{config, lib, pkgs, ...}:
+{ config, lib, pkgs, ... }:
 
+let
+  gpuOverride = {
+    PrivateDevices      = lib.mkForce false;
+    DeviceAllow         = [ "/dev/dri rw" ];
+    SupplementaryGroups = [ "video" "render" ];
+  };
+in
 {
   services.immich = {
     enable = true;
@@ -9,4 +16,8 @@
   };
 
   users.users.immich.extraGroups = [ "video" "render" ];
+
+  systemd.services.immich-server.serviceConfig.ReadWritePaths = [
+    "/srv/media/gallery"
+  ];
 }

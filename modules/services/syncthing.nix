@@ -18,4 +18,11 @@
       };
     };
   };
+  systemd.services.syncthing.serviceConfig = {
+    ReadWritePaths = [
+      "/var/lib/syncthing"
+      "/srv/files/private"
+    ];
+    SystemCallFilter = [ "@system-service" "setpriority" "~@privileged" ];
+  };
 }

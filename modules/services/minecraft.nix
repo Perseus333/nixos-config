@@ -26,6 +26,13 @@
     };
   };
 
+  systemd.services."minecraft-server-survival".serviceConfig = {
+    MemoryDenyWriteExecute = false;
+    SystemCallFilter = [ "@system-service" "@network-io" "@memlock" "~@privileged" ];
+    AmbientCapabilities    = [ "CAP_SYS_NICE" ];
+    CapabilityBoundingSet  = [ "CAP_SYS_NICE" ];
+  };
+
   nixpkgs.config.allowUnfree = true;
   networking.firewall.checkReversePath = false;
 }

@@ -9,4 +9,18 @@
     pkgs.jellyfin-web
     pkgs.jellyfin-ffmpeg
   ];
+
+  systemd.services.jellyfin.serviceConfig = {
+    PrivateDevices      = false;
+    DeviceAllow         = [ "/dev/dri rw" ];
+    SupplementaryGroups = [ "video" "render" ];
+
+    ReadWritePaths = [
+      "/var/lib/jellyfin"
+      "/var/cache/jellyfin"
+      "/srv/media"
+    ];
+
+    MemoryDenyWriteExecute = false;
+  };
 }

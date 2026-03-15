@@ -1,5 +1,5 @@
+# modules/services/backrest.nix
 { config, lib, pkgs, ... }:
-
 {
   fileSystems."/mnt/backup" = {
     device = "/dev/disk/by-label/backup";
@@ -8,16 +8,15 @@
   };
 
   environment.systemPackages = with pkgs; [ restic rclone backrest ];
-  
+
   users.users.backrest = {
     isSystemUser = true;
     group = "backrest";
     home = "/var/lib/backrest";
-    createHome = false; # systemd.tmpfiles already handles this
+    createHome = false;
   };
   users.groups.backrest = {};
 
-  # Give the backup disk to the backrest user
   systemd.tmpfiles.rules = [
     "d /mnt/backup 0750 backrest backrest -"
     "d /var/lib/backrest 0750 backrest backrest -"
@@ -39,27 +38,11 @@
       User = "backrest";
       Group = "backrest";
 
-      AmbientCapabilities = [ "CAP_DAC_READ_SEARCH" ];
+      AmbientCapabilities  = [ "CAP_DAC_READ_SEARCH" ];
       CapabilityBoundingSet = [ "CAP_DAC_READ_SEARCH" ];
-
-      # Cannot gain more privileges than this
-      NoNewPrivileges = true;
-
-      # Filesystem is read-only for backrest except explicit paths
-      ProtectSystem = "strict";
-      ReadWritePaths = [ "/var/lib/backrest" "/mnt/backup" ];
-
-      # Must be false — we need to read /home and /root
-      ProtectHome = false;
-
-      # Remaining hardening
-      PrivateTmp = true;
-      PrivateDevices = true;
-      ProtectKernelTunables = true;
-      ProtectKernelModules = true;
-      ProtectControlGroups = true;
-      RestrictSUIDSGID = true;
-      LockPersonality = true;
+      ProtectHome          = false;
+      ReadWritePaths       = [ "/var/lib/backrest" "/mnt/backup" ];
+      MemoryDenyWriteExecute   = false; 
     };
   };
 }

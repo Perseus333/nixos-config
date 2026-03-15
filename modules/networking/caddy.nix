@@ -62,4 +62,9 @@
       extraConfig = "reverse_proxy 127.0.0.1:5678";
     };
   };
+
+  systemd.services.caddy.serviceConfig = {
+    AmbientCapabilities  = lib.mkForce [ "CAP_NET_BIND_SERVICE" ];
+    CapabilityBoundingSet = lib.mkForce [ "CAP_NET_BIND_SERVICE" ];
+  };
 }

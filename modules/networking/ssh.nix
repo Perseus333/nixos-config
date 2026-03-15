@@ -17,4 +17,14 @@
       LogLevel = "VERBOSE";
     };
   };
+  systemd.services.sshd.serviceConfig = {
+    ProtectClock = lib.mkDefault true;
+    ProtectHostname = lib.mkDefault true;
+    RestrictRealtime = lib.mkDefault true;
+    ProtectKernelTunables = lib.mkDefault true;
+    ProtectKernelModules = lib.mkDefault true;
+    ProtectKernelLogs = lib.mkDefault true;
+    LockPersonality = lib.mkDefault true;
+    SystemCallArchitectures = lib.mkDefault "native";
+  };
 }

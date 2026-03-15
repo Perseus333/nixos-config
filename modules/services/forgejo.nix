@@ -24,4 +24,8 @@
       };
     };
   };
+  systemd.services.forgejo.serviceConfig = {
+    MemoryDenyWriteExecute = lib.mkForce false;
+    SystemCallFilter = [ "@system-service" "@network-io" "@memlock" "~@privileged" ];
+  };
 }
