@@ -14,7 +14,6 @@ In no particular order:
 - [ ] Host my website 
 - [ ] Expose public services via Enodia
 - [ ] Ditch Cloudflare completely
-- [ ] Set up Authelia/Kanidm/whatever to work properly in front of other services
 - [ ] Set up a toggleable ProtonVPN relay from Pandora
 - [ ] Change the Enodia server provider
 - [ ] Port the Enodia config into NixOS
@@ -39,7 +38,9 @@ In no particular order:
 - [ ] And then harden it some more
 - [ ] Draw a cool network topology with services and everything
 - [ ] Make all service configs that support it be declarative
+- [ ] Set up OIDC with Authelia for supported services
 
 ## Done
 
 - [x] Create a To Do (2025-03-15)
+- [x] Set up Authelia/Kanidm/whatever to work properly in front of other services (2025-03-16)

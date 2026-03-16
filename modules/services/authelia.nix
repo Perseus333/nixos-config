@@ -27,8 +27,8 @@
         rules = [
           {
             domain = [
-              #"media.perseuslynx.dev"
-              "immich.perseuslynx.dev"
+              "bak.perseuslynx.dev"
+	      "ai.perseuslynx.dev"
             ];
             policy = "two_factor";
           }

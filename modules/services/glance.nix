@@ -64,8 +64,8 @@ in
                     { title = "Vaultwarden"; url = "https://vault.perseuslynx.dev/";        icon = "si:vaultwarden"; }
                     { title = "Radicale";    url = "https://cal.perseuslynx.dev/.web/";     icon = "sh:radicale-light"; }
                     { title = "Syncthing";   url = "https://sync.perseuslynx.dev/";         icon = "si:syncthing"; }
-                    { title = "Backrest";    url = "https://bak.perseuslynx.dev/";          icon = "sh:backrest-light"; }
-                    { title = "Open WebUI";  url = "https://ai.perseuslynx.dev/";           icon = "sh:open-webui-light"; }
+                    { title = "Backrest";    url = "https://bak.perseuslynx.dev/";          icon = "sh:backrest-light"; alt-status-codes = [ 200 302 401 ];}
+                    { title = "Open WebUI";  url = "https://ai.perseuslynx.dev/";           icon = "sh:open-webui-light"; alt-status-codes = [ 200 302 401 ];}
                     { title = "SFTPGo";      url = "https://files.perseuslynx.dev/";        icon = "sh:sftpgo-light"; }
                     { title = "Jellyfin";    url = "https://media.perseuslynx.dev/";        icon = "sh:jellyfin-light"; }
                     { title = "Forgejo";     url = "https://git.perseuslynx.dev/";          icon = "sh:forgejo-light"; }
