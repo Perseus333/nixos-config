@@ -39,6 +39,7 @@ In no particular order:
 - [ ] Draw a cool network topology with services and everything
 - [ ] Make all service configs that support it be declarative
 - [ ] Set up OIDC with Authelia for supported services
+- [ ] Comment config where useful
 
 ## Done
 

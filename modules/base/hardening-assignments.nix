@@ -10,6 +10,7 @@
     "sftpgo"
     "glance"
     "backrest"
+    "navidrome"
   ];
 
   harden.network = [

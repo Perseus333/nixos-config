@@ -29,6 +29,7 @@
     ../../modules/services/open-webui.nix
     ../../modules/services/jellyfin.nix
     ../../modules/services/minecraft.nix
+    ../../modules/services/navidrome.nix
     ../../modules/services/radicale.nix
     ../../modules/services/samba.nix
     ../../modules/services/searx.nix

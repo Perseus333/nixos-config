@@ -73,6 +73,10 @@
       useACMEHost = "perseuslynx.dev";
       extraConfig = "reverse_proxy 127.0.0.1:5678";
     };
+    virtualHosts."music.perseuslynx.dev" = {
+      useACMEHost = "perseuslynx.dev";
+      extraConfig = "reverse_proxy 127.0.0.1:4533";
+    };
   };
 
   systemd.services.caddy.serviceConfig = {
