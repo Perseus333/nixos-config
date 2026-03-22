@@ -15,8 +15,8 @@
   };
   
   home.shellAliases = {
-    test-nixos = "sudo nixos-rebuild test --flake /home/non/nixos#pandora";
-    switch-nixos = "sudo nixos-rebuild switch --flake /home/non/nixos#pandora";
+    test-nixos = "sudo env NIX_REMOTE=daemon nixos-rebuild test --flake /home/non/nixos#pandora";
+    switch-nixos = "sudo env NIX_REMOTE=daemon nixos-rebuild switch --flake /home/non/nixos#pandora";
   };
   
   programs.bash = {
