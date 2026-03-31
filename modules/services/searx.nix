@@ -73,9 +73,6 @@
         "brave".disabled = false;
         "brave".weight = 1.5;
         
-        "google".disabled = false;
-        "google".weight = 1.4;
-        
         "duckduckgo".disabled = false;
         "duckduckgo".weight = 1.0;
        
@@ -93,9 +90,6 @@
         "crowdview".weight = 0.5;
 
         # Images
-        "google images".disabled = false;
-        "google images".weight = 1.2;
-
         "bing images".disabled = false;
         "bing images".weight = 0.5;
 
@@ -103,9 +97,6 @@
         "unsplash".weight = 0.8;
 
         # Videos
-        "google videos".disabled = false;
-        "google videos".weight = 1.2;
-
         "youtube".disabled = false;
         "youtube".weight = 1.0;
 
@@ -123,8 +114,11 @@
         "duckduckgo images".disabled = true;
         "duckduckgo videos".disabled = true;
         "flickr".disabled = true;
+        "google".disabled = true;
+        "google images".disabled = true;
         "google news".disabled = true;
         "google play movies".disabled = true;
+        "google videos".disabled = true;
         "imgur".disabled = true;
         "invidious".disabled = true;
         "library of congress".disabled = true;
