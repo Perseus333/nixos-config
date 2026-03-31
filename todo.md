@@ -9,7 +9,6 @@ In no particular order:
 - [ ] Set Enodia in a separate VLAN
 - [ ] Transfer Navidrome from Aether
 - [ ] Transfer FreshRSS from Aether
-- [ ] Set up Booklore
 - [ ] Set up a podcast library
 - [ ] Host my website 
 - [ ] Expose public services via Enodia
@@ -18,7 +17,6 @@ In no particular order:
 - [ ] Change the Enodia server provider
 - [ ] Port the Enodia config into NixOS
 - [ ] Add tests before every build
-- [ ] Add home-manager again and set up vim
 - [ ] Make the whole config as modular as Isabel Roses' 
 - [ ] Make the disks fully declarative with disko
 - [ ] Set up Windows and Linux VMs
@@ -43,5 +41,8 @@ In no particular order:
 
 ## Done
 
-- [x] Create a To Do (2025-03-15)
-- [x] Set up Authelia/Kanidm/whatever to work properly in front of other services (2025-03-16)
+- [x] Set up ~~Booklore~~ Kavita (2026-03-24?)
+- [x] Add home-manager again and set up vim (2026-03-22)
+- [x] Fix annoying build issue (2026-03-22)
+- [x] Set up Authelia/Kanidm/whatever to work properly in front of other services (2026-03-16)
+- [x] Create a To Do (2026-03-15)

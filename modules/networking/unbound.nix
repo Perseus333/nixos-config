@@ -26,6 +26,10 @@
 	harden-algo-downgrade = false;
         aggressive-nsec = true;
         val-clean-additional = true;
+        ignore-cd-flag = true;
+        harden-large-queries = true;
+        answer-cookie = true;
+        do-ip6 = false;
 
 	use-caps-for-id = true;
         deny-any = true;
@@ -43,6 +47,8 @@
 	qname-minimisation = true;
         hide-identity = true;
         hide-version = true;
+        hide-trustanchor = true;
+        qname-minimisation-strict = true;
         
 	# Performance
 	prefetch = true;
@@ -67,6 +73,7 @@
 	  ''"bak.perseuslynx.dev. IN A 10.8.0.1"''
 	  ''"home.perseuslynx.dev. IN A 10.8.0.1"''
 	  ''"music.perseuslynx.dev. IN A 10.8.0.1"''
+	  ''"books.perseuslynx.dev. IN A 10.8.0.1"''
         ];
       };
       forward-zone = {
