@@ -20,6 +20,9 @@
     hostId = "238579e0";
   };
 
+  # Enable relay
+  boot.kernel.sysctl."net.ipv4.ip_forward" = 1;
+
   # Timezone
   time.timeZone = "Europe/London";
 
