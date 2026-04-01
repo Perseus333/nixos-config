@@ -31,7 +31,10 @@
       pkgs = nixpkgs.legacyPackages.${system};
     in {
       nixosConfigurations.pandora = nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit inputs; };
+        specialArgs = { 
+          inherit inputs;
+          secrets = "${self}/secrets";
+        };
         modules = [
           ./hosts/pandora
           

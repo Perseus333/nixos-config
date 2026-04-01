@@ -2,12 +2,13 @@
 
 {
   imports = [
+    ./hardening-assignments.nix
     ./hardware.nix
+    ./wireguard.nix
     ../../modules/base/nix.nix
     ../../modules/base/boot.nix
     ../../modules/base/security.nix
     ../../modules/base/service-hardening.nix
-    ../../modules/base/hardening-assignments.nix
     ../../modules/base/users.nix
     ../../modules/base/zfs.nix
     ../../modules/networking/acme.nix
