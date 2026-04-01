@@ -7,4 +7,7 @@
       listenPort = 1558;
     };
   };
+  networking.firewall = {
+    allowedUDPPorts = [ 1558 ];
+  };
 }
