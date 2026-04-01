@@ -13,13 +13,31 @@
       init.defaultBranch = "main";
     };
   };
-  
-  home.shellAliases = {
-    test-nixos = "sudo env NIX_REMOTE=daemon nixos-rebuild test --flake /home/non/nixos#pandora";
-    switch-nixos = "sudo env NIX_REMOTE=daemon nixos-rebuild switch --flake /home/non/nixos#pandora";
-    build-nixos = "sudo env NIX_REMOTE=daemon nixos-rebuild build --flake /home/non/nixos#pandora";
-  };
-  
+ 
+  programs.bash.bashrcExtra = ''
+    rebuild-nixos() {
+      local action="''${1:-switch}"
+      local host="''${2:-$(hostname)}"
+      local extra_args=""
+
+      if [[ "$host" != "$(hostname)" && "$action" != "build" ]]; then
+        read -p "You are targeting '$host' but you are on '$(hostname)'. Are you sure? [y/N] " confirm
+        [[ $confirm == [yY] ]] || return 1
+      fi
+
+      if [ "$action" = "build" ]; then
+        extra_args="--no-link"
+      fi
+
+      sudo env NIX_REMOTE=daemon nixos-rebuild "$action" --flake "/home/non/nixos#$host" $extra_args
+    }
+
+    # Define them clearly
+    function test-nixos() { rebuild-nixos test "$1"; }
+    function switch-nixos() { rebuild-nixos switch "$1"; }
+    function build-nixos() { rebuild-nixos build "$1"; }
+  '';
+
   programs.bash = {
     enable = true;
   };
