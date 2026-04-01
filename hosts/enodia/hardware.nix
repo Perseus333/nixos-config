@@ -19,13 +19,8 @@
     };
 
   fileSystems."/boot" =
-    { device = "systemd-1";
-      fsType = "autofs";
-    };
-
-  fileSystems."/efi" =
-    { device = "systemd-1";
-      fsType = "autofs";
+    { device = "/dev/disk/by-uuid/360434bb-870a-4f3d-b148-b58f3160bd2b";
+      fsType = "ext4";
     };
 
   swapDevices = [ ];

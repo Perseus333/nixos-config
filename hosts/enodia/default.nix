@@ -48,9 +48,7 @@
   boot.loader.systemd-boot.enable = lib.mkForce false;
   boot.loader.grub = {
     enable = true;
-    device = "nodev";
-    efiSupport = true;
-    efiInstallAsRemovable = true;
+    device = "/dev/vda";
   };
 
   system.stateVersion = "25.05";
