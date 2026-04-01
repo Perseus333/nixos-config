@@ -38,6 +38,27 @@
     function build-nixos() { rebuild-nixos build "$1"; }
   '';
 
+  programs.ssh = {
+    enable = true;
+    enableDefaultConfig = false;
+    matchBlocks = {
+      "pandora-wg" = {
+        hostname = "10.8.0.1";
+        user = "non";
+        identityFile = "~/.ssh/id_yubikey_3755";
+        forwardAgent = true;
+        port = 4684;
+      };
+      "enodia-wg" = {
+        hostname = "10.8.0.5";
+        user = "non";
+        identityFile = "~/.ssh/id_yubikey_3755";
+        forwardAgent = true;
+        port = 4684;
+      };
+    };
+  };
+
   programs.bash = {
     enable = true;
   };
