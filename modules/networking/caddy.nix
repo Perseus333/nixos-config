@@ -1,74 +1,33 @@
 { config, pkgs, lib, ... }:
 
-{
+let
+  baseDomain = "perseuslynx.dev";
+  
+  servicesMap = {
+    "git"    = 3000;
+    "media"  = 8096;
+    "ai"     = 1212;
+    "img"    = 2283;
+    "search" = 8888;
+    "vault"  = 8222;
+    "cal"    = 5232;
+    "files"  = 57790;
+    "sync"   = 8384;
+    "bak"    = 9898;
+    "home"   = 5678;
+    "music"  = 4533;
+    "books"  = 5000;
+  };
+
+  mkDomain = sub: if sub == "" then baseDomain else "${sub}.${baseDomain}";
+
+in {
   services.caddy = {
     enable = true;
-
-    virtualHosts."perseuslynx.dev" = {
-      useACMEHost = "perseuslynx.dev";
-    };
-    virtualHosts."git.perseuslynx.dev" = {
-      useACMEHost = "perseuslynx.dev"; 
-      extraConfig = "reverse_proxy 127.0.0.1:3000";
-    };
-
-    #virtualHosts."auth.perseuslynx.dev" = {
-    #  useACMEHost = "perseuslynx.dev";
-    #  extraConfig = "reverse_proxy 127.0.0.1:9091";
-    #};
-
-    virtualHosts."media.perseuslynx.dev" = {
-      useACMEHost = "perseuslynx.dev"; 
-      extraConfig = "reverse_proxy 127.0.0.1:8096";
-    };
-
-    virtualHosts."ai.perseuslynx.dev" = {
-      useACMEHost = "perseuslynx.dev";
-      extraConfig = "reverse_proxy 127.0.0.1:1212";
-    };
-
-    virtualHosts."img.perseuslynx.dev" = {
-      useACMEHost = "perseuslynx.dev";
-      extraConfig = "reverse_proxy 127.0.0.1:2283";
-    };
-
-    virtualHosts."search.perseuslynx.dev" = {
-      useACMEHost = "perseuslynx.dev";
-      extraConfig = "reverse_proxy 127.0.0.1:8888";
-    };
-
-    virtualHosts."vault.perseuslynx.dev" = {
-      useACMEHost = "perseuslynx.dev";
-      extraConfig = "reverse_proxy 127.0.0.1:8222";
-    };
-    virtualHosts."cal.perseuslynx.dev" = {
-      useACMEHost = "perseuslynx.dev";
-      extraConfig = "reverse_proxy 127.0.0.1:5232";
-    };
-    virtualHosts."files.perseuslynx.dev" = {
-      useACMEHost = "perseuslynx.dev";
-      extraConfig = "reverse_proxy 127.0.0.1:57790";
-    };
-    virtualHosts."sync.perseuslynx.dev" = {
-      useACMEHost = "perseuslynx.dev";
-      extraConfig = "reverse_proxy 127.0.0.1:8384";
-    };
-    virtualHosts."bak.perseuslynx.dev" = {
-      useACMEHost = "perseuslynx.dev";
-      extraConfig = "reverse_proxy 127.0.0.1:9898";
-    };
-    virtualHosts."home.perseuslynx.dev" = {
-      useACMEHost = "perseuslynx.dev";
-      extraConfig = "reverse_proxy 127.0.0.1:5678";
-    };
-    virtualHosts."music.perseuslynx.dev" = {
-      useACMEHost = "perseuslynx.dev";
-      extraConfig = "reverse_proxy 127.0.0.1:4533";
-    };
-    virtualHosts."books.perseuslynx.dev" = {
-      useACMEHost = "perseuslynx.dev";
-      extraConfig = "reverse_proxy 127.0.0.1:5000";
-    };
+    virtualHosts = lib.mapAttrs' (sub: port: lib.nameValuePair (mkDomain sub) {
+      useACMEHost = baseDomain;
+      extraConfig = "reverse_proxy 127.0.0.1:${toString port}";
+    }) servicesMap;
   };
 
   systemd.services.caddy.serviceConfig = {
