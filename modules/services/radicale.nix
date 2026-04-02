@@ -11,7 +11,7 @@
       auth = {
         type = "htpasswd";
         htpasswd_filename = config.sops.secrets."radicale-creds".path;
-        htpasswd_encryption = "plain";
+        htpasswd_encryption = "bcrypt";
       };
       storage = {
         type = "multifilesystem";
