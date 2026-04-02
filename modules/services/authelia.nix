@@ -27,8 +27,7 @@
         rules = [
           {
             domain = [
-              "bak.perseuslynx.dev"
-	      "ai.perseuslynx.dev"
+              # to add
             ];
             policy = "two_factor";
           }
