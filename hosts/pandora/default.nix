@@ -7,6 +7,7 @@
     ./wireguard.nix
     ../../modules/base/nix.nix
     ../../modules/base/boot.nix
+    ../../modules/base/home.nix
     ../../modules/base/security.nix
     ../../modules/base/service-hardening.nix
     ../../modules/base/users.nix
