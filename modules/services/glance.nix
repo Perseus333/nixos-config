@@ -71,13 +71,13 @@ in
                     { title = "Forgejo";     url = "https://git.perseuslynx.dev/";          icon = "sh:forgejo-light"; }
                     { title = "SearXNG";     url = "https://search.perseuslynx.dev/";       icon = "sh:searxng-light"; }
                     { title = "Glance";      url = "https://home.perseuslynx.dev/";         icon = "sh:glance-light"; }
-                    { title = "Authelia";    url = "https://auth.perseuslynx.dev/";         icon = "sh:authelia-light"; }
                     { title = "NGINX";       url = "https://perseuslynx.dev/";              icon = "sh:nginx-light"; }
                     { title = "Immich";      url = "https://img.perseuslynx.dev/";          icon = "sh:immich-light"; }
                     { title = "Navidrome";   url = "https://music.perseuslynx.dev/";        icon = "sh:navidrome-light"; }
                     { title = "Kavita";      url = "https://books.perseuslynx.dev/";        icon = "sh:kavita-light"; }
-                    #{ title = "Pi-hole";     url = "https://pihole.perseuslynx.dev/admin/"; icon = "si:pi-hole"; }
-                    #{ title = "Calibre";     url = "https://books.perseuslynx.dev/";        icon = "sh:calibre-web-light"; }
+                  # { title = "Authelia";    url = "https://auth.perseuslynx.dev/";         icon = "sh:authelia-light"; }
+                  # { title = "Pi-hole";     url = "https://pihole.perseuslynx.dev/admin/"; icon = "si:pi-hole"; }
+                  # { title = "Calibre";     url = "https://books.perseuslynx.dev/";        icon = "sh:calibre-web-light"; }
                   ];
                 }
               ];

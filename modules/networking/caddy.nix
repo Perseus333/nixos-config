@@ -12,10 +12,10 @@
       extraConfig = "reverse_proxy 127.0.0.1:3000";
     };
 
-    virtualHosts."auth.perseuslynx.dev" = {
-      useACMEHost = "perseuslynx.dev";
-      extraConfig = "reverse_proxy 127.0.0.1:9091";
-    };
+    #virtualHosts."auth.perseuslynx.dev" = {
+    #  useACMEHost = "perseuslynx.dev";
+    #  extraConfig = "reverse_proxy 127.0.0.1:9091";
+    #};
 
     virtualHosts."media.perseuslynx.dev" = {
       useACMEHost = "perseuslynx.dev"; 
@@ -24,13 +24,7 @@
 
     virtualHosts."ai.perseuslynx.dev" = {
       useACMEHost = "perseuslynx.dev";
-      extraConfig = ''
-        forward_auth 127.0.0.1:9091 {
-          uri /api/authz/forward-auth
-          copy_headers Remote-User Remote-Groups Remote-Name Remote-Email
-        }
-	reverse_proxy 127.0.0.1:1212
-      '';
+      extraConfig = "reverse_proxy 127.0.0.1:1212";
     };
 
     virtualHosts."img.perseuslynx.dev" = {
@@ -61,13 +55,7 @@
     };
     virtualHosts."bak.perseuslynx.dev" = {
       useACMEHost = "perseuslynx.dev";
-      extraConfig = ''
-        forward_auth 127.0.0.1:9091 {
-          uri /api/authz/forward-auth
-          copy_headers Remote-User Remote-Groups Remote-Name Remote-Email
-        }
-        reverse_proxy 127.0.0.1:9898
-      '';
+      extraConfig = "reverse_proxy 127.0.0.1:9898";
     };
     virtualHosts."home.perseuslynx.dev" = {
       useACMEHost = "perseuslynx.dev";
