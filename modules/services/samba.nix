@@ -4,7 +4,6 @@
   services.samba = {
     enable = true;
     openFirewall = true;
-    usershares.enable = true;
     settings = {
       global = {
         "workgroup" = "WORKGROUP";
