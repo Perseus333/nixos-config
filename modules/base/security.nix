@@ -1,8 +1,8 @@
 { config, lib, pkgs, ... }:
 
 {
-  # Doesn't ask for sudo password for 30 minutes
+  # Doesn't ask for sudo password for 5 minutes
   security.sudo.extraConfig = ''
-    Defaults timestamp_timeout=30
+    Defaults timestamp_timeout=5
   '';
 }
