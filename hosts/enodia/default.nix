@@ -18,6 +18,12 @@
     ../../modules/networking/wireguard.nix
   ];
 
+  sops.secrets.enodia-nix-signing-key = {
+    owner = "root";
+    group = "root";
+    mode = "0400";
+  };
+
   # Host identification
   networking = {
     hostName = "enodia";
@@ -53,6 +59,18 @@
   boot.loader.grub = {
     enable = true;
     device = "/dev/vda";
+  };
+
+  nix.settings = {
+    # Only accept signing keys to rebuild nixos
+    trusted-public-keys = [ 
+      "pandora-cache:SkQAvcsDt0Ht2Fa9eVWcHycLh94L/eeoSrd4aFnctRc="
+      "enodia-local:oHEK4qmcidPp+ot3V9lP8udtLBeKpaqy91wFs90OVS4="
+    ];
+
+    secret-key-files = [ config.sops.secrets.enodia-nix-signing-key.path ];
+    # Set as false on the first run!
+    require-sigs = false;
   };
 
   system.stateVersion = "25.05";

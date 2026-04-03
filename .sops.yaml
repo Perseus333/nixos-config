@@ -4,15 +4,29 @@ keys:
   - &enodia_host age1d6mjy8arrfhxqxk9xxmjlayej73zyy42737xtvg5n9se3fh044nszzwxa7
 
 creation_rules:
-  - path_regex: secrets/[^/]+\.yaml$
+  - path_regex: secrets/non\.yaml$
     key_groups:
       - age:
         - *non
         - *pandora_host
         - *enodia_host
+
   - path_regex: secrets/services/[^/]+$
     key_groups:
       - age:
         - *non
         - *pandora_host
         - *enodia_host
+
+  - path_regex: secrets/hosts/pandora\.yaml$
+    key_groups:
+      - age:
+        - *non
+        - *pandora_host
+
+  - path_regex: secrets/hosts/enodia\.yaml$
+    key_groups:
+      - age:
+        - *non
+        - *enodia_host
+
