@@ -11,7 +11,6 @@
     settings.gui = {
       user = "perseus";
       passwordFile = config.sops.secrets."syncthing-pwd".path;
-      insecureSkipHostcheck = true;
       options = {
 	natEnabled = false;
 	urAccepted = -1;
