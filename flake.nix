@@ -15,9 +15,18 @@
     };
 
     nix-minecraft.url = "github:Infinidoge/nix-minecraft";
+    deploy-rs.url = "github:serokell/deploy-rs";
   };
 
-  outputs = { self, nixpkgs, sops-nix, home-manager, nix-minecraft, ... }@inputs:
+  outputs = {
+    self, 
+    nixpkgs, 
+    sops-nix, 
+    home-manager, 
+    nix-minecraft, 
+    deploy-rs,
+    ...
+  }@inputs:
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
@@ -80,5 +89,18 @@
           }
         ];
       };
+      deploy.nodes.enodia = {
+        hostname = "enodia-wg";
+        profiles.system = {
+          user = "non";
+          path = deploy-rs.lib.${system}.activate.nixos self.nixosConfigurations.enodia;
+          sshUser = "non";
+          sshOpts = [ "-A" ];
+        };
+      };
+
+      checks = builtins.mapAttrs
+        (system: deployLib: deployLib.deployChecks self.deploy)
+        deploy-rs.lib;
     };
 }
