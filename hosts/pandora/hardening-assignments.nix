@@ -26,5 +26,7 @@
     "minecraft-server-survival"
     "immich-server"
     "immich-machine-learning"
+    "kavita"
+    "ytdl-sub"
   ];
 }
