@@ -2,6 +2,7 @@
 
 {
   imports = [
+    ./caddy-conf.nix
     ./hardening-assignments.nix
     ./hardware.nix
     ./wireguard.nix
@@ -15,7 +16,6 @@
     ../../modules/networking/acme.nix
     ../../modules/networking/blocklist.nix
     ../../modules/networking/caddy.nix
-    ../../modules/networking/cloudflared.nix
     ../../modules/networking/firewall.nix
     ../../modules/networking/ssh.nix
     ../../modules/networking/ethernet.nix
@@ -68,7 +68,6 @@
     dig
     wireguard-tools
     btop
-    cloudflared
     forgejo
     forgejo-cli
     authelia

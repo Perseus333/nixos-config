@@ -1,0 +1,7 @@
+{...}:
+
+{
+  harden.network = [
+    "caddy"
+  ];
+};

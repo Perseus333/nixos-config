@@ -3,12 +3,15 @@
 {
   imports = [
     #./hardening-assignments.nix
+    ./caddy-conf.nix
     ./hardware.nix
     ./wireguard.nix
     ../../modules/base/home.nix
     ../../modules/base/nix.nix
     ../../modules/base/security.nix
     ../../modules/base/users.nix
+    ../../modules/networking/acme.nix
+    ../../modules/networking/caddy.nix
     ../../modules/networking/firewall.nix
     ../../modules/networking/ssh.nix
     ../../modules/networking/fail2ban.nix
