@@ -88,7 +88,5 @@
     '';
   };
 
-  swapDevices = [ { device = "/dev/zvol/rhea/swap"; } ];
-
   system.stateVersion = "25.05";
 }
