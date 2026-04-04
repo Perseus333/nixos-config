@@ -4,6 +4,7 @@
   imports = [
     #./hardening-assignments.nix
     ./caddy-conf.nix
+    ./disko.nix
     ./hardware.nix
     ./wireguard.nix
     ../../modules/base/home.nix

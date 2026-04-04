@@ -3,6 +3,7 @@
 {
   imports = [
     ./caddy-conf.nix
+    ./disko.nix
     ./hardening-assignments.nix
     ./hardware.nix
     ./wireguard.nix
