@@ -46,35 +46,35 @@
       };
     };
 
-    disk.backup = {
-      type   = "disk";
-      device = "/dev/disk/by-id/nvme-WD_BLACK_SN7100_2TB_25483Q809400";
-      content = {
-        type = "gpt";
-        partitions = {
-          luks-backup = {
-            size    = "100%";
-            content = {
-              type   = "luks";
-              name   = "cryptbackup";
-
-              extraFormatArgs = [
-                "--type"  "luks2"
-                "--pbkdf" "argon2id"
-                "--label" "cryptbackup"
-              ];
-
-              settings.allowDiscards = true;
-
-              content = {
-                type = "zfs";
-                pool = "bpool";
-              };
-            };
-          };
-        };
-      };
-    };
+    # disk.backup = {
+    #   type   = "disk";
+    #   device = "/dev/disk/by-id/nvme-WD_BLACK_SN7100_2TB_25483Q809400";
+    #   content = {
+    #     type = "gpt";
+    #     partitions = {
+    #       luks-backup = {
+    #         size    = "100%";
+    #         content = {
+    #           type   = "luks";
+    #           name   = "cryptbackup";
+    #
+    #           extraFormatArgs = [
+    #             "--type"  "luks2"
+    #             "--pbkdf" "argon2id"
+    #             "--label" "cryptbackup"
+    #           ];
+    #
+    #           settings.allowDiscards = true;
+    #
+    #           content = {
+    #             type = "zfs";
+    #             pool = "bpool";
+    #           };
+    #         };
+    #       };
+    #     };
+    #   };
+    # };
 
     zpool.rpool = {
       type = "zpool";
@@ -175,52 +175,52 @@
       };
     };
 
-    zpool.bpool = {
-      type = "zpool";
-
-      options = {
-        ashift   = "12";
-        autotrim = "on";
-      };
-
-      rootFsOptions = {
-        compression             = "zstd";
-        atime                   = "off";
-        mountpoint              = "none";
-        canmount                = "off";
-        "com.sun:auto-snapshot" = "false";
-      };
-
-      datasets = {
-        "restic" = {
-          type       = "zfs_fs";
-          mountpoint = "/mnt/backup/restic";
-          options    = {
-            "com.sun:auto-snapshot" = "true";
-          };
-        };
-
-        "snapshots" = {
-          type    = "zfs_fs";
-          options = { mountpoint = "none"; canmount = "off"; };
-        };
-
-        "snapshots/media" = {
-          type       = "zfs_fs";
-          mountpoint = "/mnt/backup/snapshots/media";
-          options    = {
-            "com.sun:auto-snapshot" = "false";
-          };
-        };
-
-        "snapshots/persist" = {
-          type       = "zfs_fs";
-          mountpoint = "/mnt/backup/snapshots/persist";
-          options    = {
-            "com.sun:auto-snapshot" = "false";
-          };
-        };
-      };
-    };
+    # zpool.bpool = {
+    #   type = "zpool";
+    #
+    #   options = {
+    #     ashift   = "12";
+    #     autotrim = "on";
+    #   };
+    #
+    #   rootFsOptions = {
+    #     compression             = "zstd";
+    #     atime                   = "off";
+    #     mountpoint              = "none";
+    #     canmount                = "off";
+    #     "com.sun:auto-snapshot" = "false";
+    #   };
+    #
+    #   datasets = {
+    #     "restic" = {
+    #       type       = "zfs_fs";
+    #       mountpoint = "/mnt/backup/restic";
+    #       options    = {
+    #         "com.sun:auto-snapshot" = "true";
+    #       };
+    #     };
+    #
+    #     "snapshots" = {
+    #       type    = "zfs_fs";
+    #       options = { mountpoint = "none"; canmount = "off"; };
+    #     };
+    #
+    #     "snapshots/media" = {
+    #       type       = "zfs_fs";
+    #       mountpoint = "/mnt/backup/snapshots/media";
+    #       options    = {
+    #         "com.sun:auto-snapshot" = "false";
+    #       };
+    #     };
+    #
+    #     "snapshots/persist" = {
+    #       type       = "zfs_fs";
+    #       mountpoint = "/mnt/backup/snapshots/persist";
+    #       options    = {
+    #         "com.sun:auto-snapshot" = "false";
+    #       };
+    #     };
+    #   };
+    # };
   };
 }
