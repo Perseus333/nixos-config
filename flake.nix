@@ -15,7 +15,15 @@
     };
 
     nix-minecraft.url = "github:Infinidoge/nix-minecraft";
+
     deploy-rs.url = "github:serokell/deploy-rs";
+    
+    disko = {
+      url = "github:nix-community/disko/";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    impermanence.url = "github:nix-community/impermanence";
   };
 
   outputs = {
@@ -25,6 +33,8 @@
     home-manager, 
     nix-minecraft, 
     deploy-rs,
+    disko,
+    impermanence,
     ...
   }@inputs:
     let
@@ -62,6 +72,9 @@
           {
             nixpkgs.overlays = [ inputs.nix-minecraft.overlay ];
           }
+
+          disko.nixosModules.disko
+          impermanence.nixosModules.impermanence
         ];
       };
 
@@ -87,6 +100,9 @@
             home-manager.useUserPackages = true;
             home-manager.users.non = import ./home/non;
           }
+
+          disko.nixosModules.disko
+          impermanence.nixosModules.impermanence
         ];
       };
       deploy.nodes.enodia = {

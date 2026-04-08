@@ -4,6 +4,9 @@
   environment.persistence."/persist" = {
     hideMounts = true;
     directories = [
+      "/var/lib/nixos"
+      "/var/lib/systemd"
+      "/var/log"
       "/var/lib/vaultwarden"
       "/var/lib/forgejo"
       "/var/lib/immich"
@@ -15,7 +18,6 @@
       "/var/lib/navidrome"
       "/var/lib/postgresql"
       "/var/lib/jellyfin"
-      "/srv/data"
       "/etc/ssh"
     ];
     files = [

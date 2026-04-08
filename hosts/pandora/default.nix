@@ -83,6 +83,8 @@
     zip
   ];
 
+  fileSystems."/persist".neededForBoot = true;
+
   # Simple security logs
   services.journald = {
     extraConfig = ''

@@ -49,8 +49,9 @@
                 };
 
                 "@persist" = {
-                  mountpoint   = "/persist";
-                  mountOptions = [ "compress=zstd:1" "noatime" ];
+                  mountpoint    = "/persist";
+                  neededForBoot = "true";
+                  mountOptions  = [ "compress=zstd:1" "noatime" ];
                 };
 
                 "@log" = {
