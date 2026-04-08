@@ -6,8 +6,10 @@
     ./caddy-conf.nix
     ./disko.nix
     ./hardware.nix
+    ./impermanence.nix
     ./wireguard.nix
     ../../modules/base/home.nix
+    ../../modules/base/impermanence.nix
     ../../modules/base/nix.nix
     ../../modules/base/security.nix
     ../../modules/base/users.nix
@@ -60,7 +62,10 @@
   boot.loader.grub = {
     enable = true;
     device = "/dev/vda";
+    efiSupport = true;
+    efiInstallAsRemovable = true;
   };
+  boot.initrd.systemd.enable = true;
 
   nix.settings = {
     # Only accept signing keys to rebuild nixos
