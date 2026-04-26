@@ -6,6 +6,7 @@
   };
   users.users.non = {
     isNormalUser = true;
+    initialPassword = "123456";
     extraGroups = [ "wheel" "samba" "sftpgo"];
     hashedPasswordFile = config.sops.secrets.non-pwd-hash.path;
     openssh.authorizedKeys.keys = [

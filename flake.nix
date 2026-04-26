@@ -22,8 +22,6 @@
       url = "github:nix-community/disko/";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    impermanence.url = "github:nix-community/impermanence";
   };
 
   outputs = {
@@ -34,7 +32,6 @@
     nix-minecraft, 
     deploy-rs,
     disko,
-    impermanence,
     ...
   }@inputs:
     let
@@ -74,7 +71,6 @@
           }
 
           disko.nixosModules.disko
-          impermanence.nixosModules.impermanence
         ];
       };
 
@@ -102,7 +98,6 @@
           }
 
           disko.nixosModules.disko
-          impermanence.nixosModules.impermanence
         ];
       };
       deploy.nodes.enodia = {
