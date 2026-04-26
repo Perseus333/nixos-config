@@ -52,8 +52,8 @@
           {
             sops.defaultSopsFile = ./secrets/non.yaml;
             sops.defaultSopsFormat = "yaml";
-            sops.age.sshKeyPaths = [ "/etc/ssh/ssh_host_ed25519_key" ];
-            sops.age.generateKey = true;
+            sops.age.sshKeyPaths = [ "/persist/etc/ssh/ssh_host_ed25519_key" ];
+            sops.age.generateKey = false;
           }
 
           # Home Manager configuration
