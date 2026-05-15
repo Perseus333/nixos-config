@@ -1,11 +1,17 @@
 { config, lib, pkgs, ... }:
 
 {
-  sops.secrets."wifi-pwd" = {};
-
+  sops.secrets."wifi-ssid-1" = {};
+  sops.secrets."wifi-psk-1" = {};
+  sops.secrets."wifi-ssid-2" = {};
+  sops.secrets."wifi-psk-2" = {};
+  
   sops.templates."wireless-secrets" = {
     content = ''
-      psk=${config.sops.placeholder.wifi-pwd}
+      ssid_1=${config.sops.placeholder.wifi-ssid-1}
+      ssid_2=${config.sops.placeholder.wifi-ssid-2}
+      psk_1=${config.sops.placeholder.wifi-psk-1}
+      psk_2=${config.sops.placeholder.wifi-psk-2}
     '';
     restartUnits = [ "wpa_supplicant.service" ];
   };
@@ -14,8 +20,15 @@
     wireless = {
       enable = true;
       secretsFile = config.sops.templates."wireless-secrets".path;
-      networks."SKYDRNXQ" = {
-        pskRaw = "ext:psk";
+      networks = {
+        "network1" = {
+          ssid = "ext:ssid_1";
+          pskRaw = "ext:psk_1";
+        };
+        "network2" = {
+          ssid = "ext:ssid_2";
+          pskRaw = "ext:psk_2";
+        };
       };
     };
     useDHCP = true;
