@@ -52,7 +52,7 @@
           {
             sops.defaultSopsFile = ./secrets/non.yaml;
             sops.defaultSopsFormat = "yaml";
-            sops.age.sshKeyPaths = [ "/persist/etc/ssh/ssh_host_ed25519_key" ];
+            sops.age.keyFile = "/persist/var/lib/sops-nix/key.txt";
             sops.age.generateKey = false;
           }
 
