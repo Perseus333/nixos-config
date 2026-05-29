@@ -11,6 +11,7 @@
     ../../modules/base/home.nix
     ../../modules/base/impermanence.nix
     ../../modules/base/nix.nix
+    ../../modules/base/packages.nix
     ../../modules/base/security.nix
     ../../modules/base/users.nix
     ../../modules/networking/acme.nix
@@ -38,25 +39,6 @@
 
   # Timezone
   time.timeZone = "Europe/London";
-
-  # System packages
-  environment.systemPackages = with pkgs; [
-    vim 
-    wget
-    wpa_supplicant
-    iproute2
-    iputils
-    git
-    tree
-    tmux
-    age
-    sops
-    home-manager
-    dig
-    wireguard-tools
-    btop
-    tcpdump
-  ];
 
   boot.loader.systemd-boot.enable = lib.mkForce false;
   boot.loader.grub = {

@@ -7,10 +7,11 @@
     ./hardening-assignments.nix
     ./hardware.nix
     ./wireguard.nix
-    ../../modules/base/nix.nix
     ../../modules/base/boot.nix
     ../../modules/base/home.nix
     ../../modules/base/impermanence.nix
+    ../../modules/base/nix.nix
+    ../../modules/base/packages.nix
     ../../modules/base/security.nix
     ../../modules/base/service-hardening.nix
     ../../modules/base/users.nix
@@ -49,38 +50,18 @@
     hostId = "e281e2d1";
   };
 
-  # Timezone
-  time.timeZone = "Europe/London";
-
-  # System packages
+  # Host-specific packages
   environment.systemPackages = with pkgs; [
-    vim 
-    wget
-    wpa_supplicant
-    networkmanager
-    dhcpcd
-    iproute2
-    iputils
-    git
-    tree
-    tmux
-    age
-    sops
-    home-manager
-    dig
-    wireguard-tools
-    btop
     forgejo
     forgejo-cli
     authelia
     open-webui
-    immich
     immich-cli
-    tcpdump
     backrest
-    unzip
-    zip
   ];
+
+  # Timezone
+  time.timeZone = "Europe/London";
 
   # Simple security logs
   services.journald = {
