@@ -5,12 +5,12 @@
   sops.secrets."wifi-psk-1" = {};
   sops.secrets."wifi-ssid-2" = {};
   sops.secrets."wifi-psk-2" = {};
-  
+
   sops.templates."wireless-secrets" = {
     content = ''
       ssid_1=${config.sops.placeholder.wifi-ssid-1}
-      ssid_2=${config.sops.placeholder.wifi-ssid-2}
       psk_1=${config.sops.placeholder.wifi-psk-1}
+      ssid_2=${config.sops.placeholder.wifi-ssid-2}
       psk_2=${config.sops.placeholder.wifi-psk-2}
     '';
     restartUnits = [ "wpa_supplicant.service" ];
