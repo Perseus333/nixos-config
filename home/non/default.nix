@@ -42,14 +42,14 @@
     enable = true;
     enableDefaultConfig = false;
     matchBlocks = {
-      "pandora" = {
+      "venti" = {
         hostname = "10.8.0.1";
         user = "non";
         identityFile = "~/.ssh/id_yubikey_3755";
         forwardAgent = true;
         port = 4684;
       };
-      "enodia" = {
+      "xiao" = {
         hostname = "10.8.0.5";
         user = "non";
         identityFile = "~/.ssh/id_yubikey_3755";

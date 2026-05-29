@@ -26,7 +26,7 @@
     enable = true;
     certificateFile = config.sops.secrets."cloudflared-cert".path;
     tunnels = {
-      "pandora-main" = {
+      "venti-main" = {
         ingress = {
           "git.perseuslynx.dev"   = "http://localhost:3000";
           #"files.perseuslynx.dev"   = "http://localhost:57790";

@@ -44,7 +44,7 @@
 
   # Host identification
   networking = {
-    hostName = "pandora";
+    hostName = "venti";
     hostId = "e281e2d1";
   };
 

@@ -3,18 +3,18 @@ let
   wg-secrets = "${secrets}/services/wireguard.yaml";
 in
 {
-  sops.secrets.wg-enodia-private-key = { sopsFile = "${wg-secrets}"; };
-  sops.secrets.wg-pandora-enodia-psk = { sopsFile = "${wg-secrets}"; };
-  sops.secrets.wg-fedora-enodia-psk  = { sopsFile = "${wg-secrets}"; };
-  sops.secrets.wg-xiaomi-enodia-psk  = { sopsFile = "${wg-secrets}"; };
-  sops.secrets.wg-s5e-enodia-psk     = { sopsFile = "${wg-secrets}"; };
-  sops.secrets.wg-mm-enodia-psk      = { sopsFile = "${wg-secrets}"; };
+  sops.secrets.wg-xiao-private-key = { sopsFile = "${wg-secrets}"; };
+  sops.secrets.wg-venti-xiao-psk = { sopsFile = "${wg-secrets}"; };
+  sops.secrets.wg-fedora-xiao-psk  = { sopsFile = "${wg-secrets}"; };
+  sops.secrets.wg-xiaomi-xiao-psk  = { sopsFile = "${wg-secrets}"; };
+  sops.secrets.wg-s5e-xiao-psk     = { sopsFile = "${wg-secrets}"; };
+  sops.secrets.wg-mm-xiao-psk      = { sopsFile = "${wg-secrets}"; };
 
   networking.wireguard.interfaces.wg0 = {
     ips = [ "10.8.0.5/24" ];
     mtu = 1280;
     
-    privateKeyFile = config.sops.secrets.wg-enodia-private-key.path;
+    privateKeyFile = config.sops.secrets.wg-xiao-private-key.path;
 
     postSetup = ''
       # Configuration to relay the connection (AI made)
@@ -42,34 +42,34 @@ in
 
     peers = [
       {
-        # pandora-server
+        # venti-server
         publicKey = "wCP4CrBEY/3DUj1z8oR+eduX4QpEgP9BvTna2aoOcHs=";
-        presharedKeyFile = config.sops.secrets.wg-pandora-enodia-psk.path;
+        presharedKeyFile = config.sops.secrets.wg-venti-xiao-psk.path;
         allowedIPs = [ "10.8.0.1/32" ];
         persistentKeepalive = 25;
       }
       {
         # fedora-laptop
         publicKey = "DG7QHUUJVB2WHKYkWJ7XRBaC4D4hubtJ2PBiq/y5slw=";
-        presharedKeyFile = config.sops.secrets.wg-fedora-enodia-psk.path;
+        presharedKeyFile = config.sops.secrets.wg-fedora-xiao-psk.path;
         allowedIPs = [ "10.8.0.2/32" ];
       }
       {
         # lineageos-phone (xiaomi)
         publicKey = "LyQMscskUxGoJHAWA/Ebl6cghDOPxmeknbAHq71z8E8=";
-        presharedKeyFile = config.sops.secrets.wg-xiaomi-enodia-psk.path;
+        presharedKeyFile = config.sops.secrets.wg-xiaomi-xiao-psk.path;
         allowedIPs = [ "10.8.0.3/32" ];
       }
       {
         # lineageos-tablet (s5e)
         publicKey = "N4Nt8s9iMQEPR77IS0OdvyCFp3hbWpqh4rVlbYMga0U=";
-        presharedKeyFile = config.sops.secrets.wg-s5e-enodia-psk.path;
+        presharedKeyFile = config.sops.secrets.wg-s5e-xiao-psk.path;
         allowedIPs = [ "10.8.0.4/32" ];
       }
       {
         # phone-mm
         publicKey = "3a9hbEgNZ/XCMc6t+v8wjBv7iL7394V397EeGoz0phY=";
-        presharedKeyFile = config.sops.secrets.wg-mm-enodia-psk.path;
+        presharedKeyFile = config.sops.secrets.wg-mm-xiao-psk.path;
         allowedIPs = [ "10.8.0.6/32" ];
       }
     ];

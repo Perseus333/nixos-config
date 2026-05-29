@@ -1,8 +1,8 @@
 keys:
   - &non age1z9z4v2f4853ytfds493qzq4wkxgyznngvdxgnu6j3khqhymxxqnsjkvlq4
   - &kazuha_user age18kfh3u8dx4qcye2xp09wgpj6xf8ycclfmzth98vkj2vw4z38j4lq07shc9
-  - &pandora_host age13mtjhs9hk7zke0jd5zmlpgsr44ffxds8hlystq6yw8h9ql20mchs495h5f
-  - &enodia_host age1d6mjy8arrfhxqxk9xxmjlayej73zyy42737xtvg5n9se3fh044nszzwxa7
+  - &venti_host age13mtjhs9hk7zke0jd5zmlpgsr44ffxds8hlystq6yw8h9ql20mchs495h5f
+  - &xiao_host age1d6mjy8arrfhxqxk9xxmjlayej73zyy42737xtvg5n9se3fh044nszzwxa7
 
 creation_rules:
   - path_regex: secrets/non\.yaml$
@@ -10,28 +10,28 @@ creation_rules:
       - age:
         - *non
         - *kazuha_user
-        - *pandora_host
-        - *enodia_host
+        - *venti_host
+        - *xiao_host
 
   - path_regex: secrets/services/[^/]+$
     key_groups:
       - age:
         - *non
         - *kazuha_user
-        - *pandora_host
-        - *enodia_host
+        - *venti_host
+        - *xiao_host
 
-  - path_regex: secrets/hosts/pandora\.yaml$
+  - path_regex: secrets/hosts/venti\.yaml$
     key_groups:
       - age:
         - *non
         - *kazuha_user
-        - *pandora_host
+        - *venti_host
 
-  - path_regex: secrets/hosts/enodia\.yaml$
+  - path_regex: secrets/hosts/xiao\.yaml$
     key_groups:
       - age:
         - *non
         - *kazuha_user
-        - *enodia_host
+        - *xiao_host
 

@@ -7,8 +7,8 @@
     settings = {
       global = {
         "workgroup" = "WORKGROUP";
-        "server string" = "pandorasmb";
-        "netbios name" = "pandorasmb";
+        "server string" = "ventismb";
+        "netbios name" = "ventismb";
         "security" = "user";
         "hosts allow" = "10.8.0.";
         "hosts deny" = "0.0.0.0/0";

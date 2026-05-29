@@ -39,13 +39,13 @@
       pkgs = nixpkgs.legacyPackages.${system};
     in
     {
-      nixosConfigurations.pandora = nixpkgs.lib.nixosSystem {
+      nixosConfigurations.venti = nixpkgs.lib.nixosSystem {
         specialArgs = {
           inherit inputs;
           secrets = "${self}/secrets";
         };
         modules = [
-          ./hosts/pandora
+          ./hosts/venti
 
           # SOPS configuration
           sops-nix.nixosModules.sops
@@ -74,13 +74,13 @@
         ];
       };
 
-      nixosConfigurations.enodia = nixpkgs.lib.nixosSystem {
+      nixosConfigurations.xiao = nixpkgs.lib.nixosSystem {
         specialArgs = {
           inherit inputs;
           secrets = "${self}/secrets";
         };
         modules = [
-          ./hosts/enodia
+          ./hosts/xiao
 
           sops-nix.nixosModules.sops
           {
@@ -100,11 +100,11 @@
           disko.nixosModules.disko
         ];
       };
-      deploy.nodes.enodia = {
-        hostname = "enodia-wg";
+      deploy.nodes.xiao = {
+        hostname = "xiao-wg";
         profiles.system = {
           user = "non";
-          path = deploy-rs.lib.${system}.activate.nixos self.nixosConfigurations.enodia;
+          path = deploy-rs.lib.${system}.activate.nixos self.nixosConfigurations.xiao;
           sshUser = "non";
           sshOpts = [ "-A" ];
         };
