@@ -5,6 +5,7 @@
     ./caddy-conf.nix
     ./disko.nix
     ./hardening-assignments.nix
+    ./impermanence.nix
     ./hardware.nix
     ./wireguard.nix
     ../../modules/base/boot.nix
