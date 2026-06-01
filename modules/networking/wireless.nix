@@ -5,6 +5,8 @@
   sops.secrets."wifi-psk-1" = {};
   sops.secrets."wifi-ssid-2" = {};
   sops.secrets."wifi-psk-2" = {};
+  sops.secrets."wifi-ssid-3" = {};
+  sops.secrets."wifi-psk-3" = {};
 
   sops.templates."wireless-secrets" = {
     content = ''
@@ -12,7 +14,9 @@
       psk_1=${config.sops.placeholder.wifi-psk-1}
       ssid_2=${config.sops.placeholder.wifi-ssid-2}
       psk_2=${config.sops.placeholder.wifi-psk-2}
-    '';
+      ssid_3=${config.sops.placeholder.wifi-ssid-3}
+      psk_3=${config.sops.placeholder.wifi-psk-3}
+   '';
     restartUnits = [ "wpa_supplicant.service" ];
   };
 
@@ -28,6 +32,10 @@
         "network2" = {
           ssid = "ext:ssid_2";
           pskRaw = "ext:psk_2";
+        };
+        "network3" = {
+          ssid = "ext:ssid_3";
+          pskRaw = "ext:pks_3";
         };
       };
     };
