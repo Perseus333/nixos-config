@@ -14,10 +14,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    impermanence.url = "github:nix-community/impermanence";
+
     nix-minecraft.url = "github:Infinidoge/nix-minecraft";
 
     deploy-rs.url = "github:serokell/deploy-rs";
-    
+
     disko = {
       url = "github:nix-community/disko/";
       inputs.nixpkgs.follows = "nixpkgs";
