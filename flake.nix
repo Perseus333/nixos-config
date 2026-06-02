@@ -91,8 +91,8 @@
           {
             sops.defaultSopsFile = ./secrets/non.yaml;
             sops.defaultSopsFormat = "yaml";
-            sops.age.sshKeyPaths = [ "/etc/ssh/ssh_host_ed25519_key" ];
-            sops.age.generateKey = true;
+            sops.age.keyFile = "/persist/var/lib/sops-nix/key.txt";
+            sops.age.generateKey = false;
           }
 
           home-manager.nixosModules.home-manager
