@@ -4,20 +4,20 @@
   services.openssh = {
     enable = true;
     ports = [ 4684 ];
-    openFirewall = true;
+    openFirewall = false;
     settings = {
       PermitRootLogin = "no";
       PasswordAuthentication = false;
-      AllowUsers = [
-        "non@192.168.0.0/16"     # local IPv4
-        "non@fd7b:323:3ba9::/48" # local IPv6
-        "non@10.8.0.0/16"        # wireguard
-      ];
+      AllowUsers = [ "non" ];
       KbdInteractiveAuthentication = false; # redundant
       # Logs all connection attempts
       LogLevel = "VERBOSE";
+
+      # Replace Fail2ban with PerSourcePenalties
+      # https://text.tchncs.de/senioradmin/are-you-still-banning-or-do-you-already-penalize
     };
   };
+  /* Disabled temporarily
   systemd.services.sshd.serviceConfig = {
     ProtectClock = lib.mkDefault true;
     ProtectHostname = lib.mkDefault true;
@@ -28,4 +28,5 @@
     LockPersonality = lib.mkDefault true;
     SystemCallArchitectures = lib.mkDefault "native";
   };
+  */
 }

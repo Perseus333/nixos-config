@@ -9,6 +9,7 @@
     ];
     bantime-increment.enable = true;
     jails = {
+      # Replace with SSH penalizations
       sshd = {
         enabled = true;
         settings = {
