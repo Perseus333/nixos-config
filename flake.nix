@@ -73,6 +73,8 @@
           }
 
           disko.nixosModules.disko
+
+          impermanence.nixosModules.impermanence
         ];
       };
 
