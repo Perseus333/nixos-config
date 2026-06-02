@@ -18,12 +18,12 @@
         ];
 
         root-hints = "${pkgs.dns-root-data}/root.hints";
-        
-	# Security/DNNSEC
-	harden-glue = true;
+
+        # Security/DNNSEC
+        harden-glue = true;
         harden-dnssec-stripped = true;
-	harden-below-nxdomain = true;
-	harden-algo-downgrade = false;
+        harden-below-nxdomain = true;
+        harden-algo-downgrade = false;
         aggressive-nsec = true;
         val-clean-additional = true;
         ignore-cd-flag = true;
@@ -31,7 +31,7 @@
         answer-cookie = true;
         do-ip6 = false;
 
-	use-caps-for-id = true;
+        use-caps-for-id = true;
         deny-any = true;
         do-not-query-localhost = true;
         private-address = [
@@ -43,19 +43,19 @@
           "fe80::/10"
         ];
  
-	# Privacy
-	qname-minimisation = true;
+        # Privacy
+        qname-minimisation = true;
         hide-identity = true;
         hide-version = true;
         hide-trustanchor = true;
         qname-minimisation-strict = true;
-        
-	# Performance
-	prefetch = true;
+
+        # Performance
+        prefetch = true;
         edns-buffer-size = 1232;
         ratelimit = 100;
-       
-	local-zone = [
+
+        local-zone = [
           "perseuslynx.dev. transparent"
         ];
 
@@ -69,11 +69,11 @@
           ''"vault.perseuslynx.dev. IN A 10.8.0.1"''
           ''"cal.perseuslynx.dev. IN A 10.8.0.1"''
           ''"files.perseuslynx.dev. IN A 10.8.0.1"''
-	  ''"sync.perseuslynx.dev. IN A 10.8.0.1"''
-	  ''"bak.perseuslynx.dev. IN A 10.8.0.1"''
-	  ''"home.perseuslynx.dev. IN A 10.8.0.1"''
-	  ''"music.perseuslynx.dev. IN A 10.8.0.1"''
-	  ''"books.perseuslynx.dev. IN A 10.8.0.1"''
+          ''"sync.perseuslynx.dev. IN A 10.8.0.1"''
+          ''"bak.perseuslynx.dev. IN A 10.8.0.1"''
+          ''"home.perseuslynx.dev. IN A 10.8.0.1"''
+          ''"music.perseuslynx.dev. IN A 10.8.0.1"''
+          ''"books.perseuslynx.dev. IN A 10.8.0.1"''
         ];
       };
       forward-zone = {

@@ -16,7 +16,6 @@
       dnsProvider = "cloudflare";
       dnsPropagationCheck = true;
       credentialsFile = config.sops.secrets.cloudflare-dns-token.path;
-      
       group = "caddy"; 
     };
   };
