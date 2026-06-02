@@ -34,6 +34,7 @@
     nix-minecraft, 
     deploy-rs,
     disko,
+    impermanence,
     ...
   }@inputs:
     let
