@@ -1,5 +1,7 @@
 { config, lib, pkgs, ... }:
 {
+  fileSystems."/persist".neededForBoot = true;
+
   boot.initrd.systemd.services.rollback = {
     description = "Rollback btrfs root subvolume to blank";
     wantedBy = [ "initrd.target" ];

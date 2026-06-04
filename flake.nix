@@ -103,6 +103,8 @@
           }
 
           disko.nixosModules.disko
+
+          impermanence.nixosModules.impermanence
         ];
       };
       deploy.nodes.xiao = {
