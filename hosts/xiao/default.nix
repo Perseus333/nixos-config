@@ -40,10 +40,11 @@
   boot.loader.systemd-boot.enable = lib.mkForce false;
   boot.loader.grub = {
     enable = true;
-    device = "/dev/vda";
+    device = "nodev";
     efiSupport = true;
     efiInstallAsRemovable = true;
   };
+  boot.loader.efi.efiSysMountPoint = "/boot";
   boot.initrd.systemd.enable = true;
 
   nix.settings = {

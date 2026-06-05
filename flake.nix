@@ -91,7 +91,7 @@
           {
             sops.defaultSopsFile = ./secrets/non.yaml;
             sops.defaultSopsFormat = "yaml";
-            sops.age.keyFile = "/persist/var/lib/sops-nix/key.txt";
+            sops.age.keyFile = "/var/lib/sops-nix/key.txt";
             sops.age.generateKey = false;
           }
 
