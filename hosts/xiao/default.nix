@@ -4,12 +4,9 @@
   imports = [
     #./hardening-assignments.nix
     ./caddy-conf.nix
-    ./disko.nix
     ./hardware.nix
-    ./impermanence.nix
     ./wireguard.nix
     ../../modules/base/home.nix
-    ../../modules/base/impermanence.nix
     ../../modules/base/nix.nix
     ../../modules/base/packages.nix
     ../../modules/base/security.nix
@@ -22,11 +19,11 @@
     ../../modules/networking/wireguard.nix
   ];
 
-  sops.secrets.xiao-nix-signing-key = {
-    owner = "root";
-    group = "root";
-    mode = "0400";
-  };
+  #sops.secrets.xiao-nix-signing-key = {
+  #  owner = "root";
+  #  group = "root";
+  #  mode = "0400";
+  #};
 
   # Host identification
   networking = {
@@ -57,9 +54,9 @@
     #   "xiao-local:oHEK4qmcidPp+ot3V9lP8udtLBeKpaqy91wFs90OVS4="
     # ];
 
-    secret-key-files = [ config.sops.secrets.xiao-nix-signing-key.path ];
+    # secret-key-files = [ config.sops.secrets.xiao-nix-signing-key.path ];
     # Set as false on the first run!
-    require-sigs = false;
+    # require-sigs = false;
   };
 
   system.stateVersion = "25.05";

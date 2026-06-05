@@ -101,10 +101,6 @@
             home-manager.useUserPackages = true;
             home-manager.users.non = import ./home/non;
           }
-
-          disko.nixosModules.disko
-
-          impermanence.nixosModules.impermanence
         ];
       };
       deploy.nodes.xiao = {

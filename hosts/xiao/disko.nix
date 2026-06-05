@@ -24,7 +24,7 @@
           };
 
           swap = {
-            size    = "2G";
+            size    = "1.5G";
             content = { type = "swap"; };
           };
 
@@ -51,11 +51,6 @@
                 "@persist" = {
                   mountpoint    = "/persist";
                   mountOptions  = [ "compress=zstd:1" "noatime" ];
-                };
-
-                "@log" = {
-                  mountpoint   = "/var/log";
-                  mountOptions = [ "compress=zstd:1" "noatime" ];
                 };
               };
             };
