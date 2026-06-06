@@ -35,7 +35,7 @@
         };
         "network3" = {
           ssid = "ext:ssid_3";
-          pskRaw = "ext:pks_3";
+          pskRaw = "ext:psk_3";
         };
       };
     };
