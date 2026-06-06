@@ -18,26 +18,42 @@ in
 
     postSetup = ''
       # Configuration to relay the connection (AI made)
+      ${pkgs.iptables}/bin/iptables -A FORWARD -i wg0 -o ens6 -m state --state ESTABLISHED,RELATED -j ACCEPT
+
+      # MC
       ${pkgs.iptables}/bin/iptables -t nat -A PREROUTING -i ens6 -p tcp --dport 25565 -j DNAT --to-destination 10.8.0.1:25565
       ${pkgs.iptables}/bin/iptables -A FORWARD -i ens6 -o wg0 -p tcp --dport 25565 -j ACCEPT
-      ${pkgs.iptables}/bin/iptables -A FORWARD -i wg0 -o ens6 -m state --state ESTABLISHED,RELATED -j ACCEPT
       ${pkgs.iptables}/bin/iptables -t nat -A POSTROUTING -o wg0 -p tcp -d 10.8.0.1 --dport 25565 -j MASQUERADE
 
       # WebDAV & SFTP
       ${pkgs.iptables}/bin/iptables -t nat -A PREROUTING -i ens6 -p tcp -m multiport --dports 2022,10080 -j DNAT --to-destination 10.8.0.1
       ${pkgs.iptables}/bin/iptables -A FORWARD -i ens6 -o wg0 -p tcp -m multiport --dports 2022,10080 -j ACCEPT
+
+      # acme-dns
+      ${pkgs.iptables}/bin/iptables -t nat -A PREROUTING -i ens6 -p udp --dport 53 -j DNAT --to-destination 10.8.0.1:53
+      ${pkgs.iptables}/bin/iptables -A FORWARD -i ens6 -o wg0 -p udp --dport 53 -j ACCEPT
+      ${pkgs.iptables}/bin/iptables -t nat -A PREROUTING -i ens6 -p tcp --dport 53 -j DNAT --to-destination 10.8.0.1:53
+      ${pkgs.iptables}/bin/iptables -A FORWARD -i ens6 -o wg0 -p tcp --dport 53 -j ACCEPT
     '';
 
     preShutdown = ''
       # Configuration to relay the connection (AI made)
+      ${pkgs.iptables}/bin/iptables -D FORWARD -i wg0 -o ens6 -m state --state ESTABLISHED,RELATED -j ACCEPT
+
+      # MC
       ${pkgs.iptables}/bin/iptables -t nat -D PREROUTING -i ens6 -p tcp --dport 25565 -j DNAT --to-destination 10.8.0.1:25565
       ${pkgs.iptables}/bin/iptables -D FORWARD -i ens6 -o wg0 -p tcp --dport 25565 -j ACCEPT
-      ${pkgs.iptables}/bin/iptables -D FORWARD -i wg0 -o ens6 -m state --state ESTABLISHED,RELATED -j ACCEPT
       ${pkgs.iptables}/bin/iptables -t nat -D POSTROUTING -o wg0 -p tcp -d 10.8.0.1 --dport 25565 -j MASQUERADE
 
       # WebDAV & SFTP
       ${pkgs.iptables}/bin/iptables -t nat -D PREROUTING -i ens6 -p tcp -m multiport --dports 2022,10080 -j DNAT --to-destination 10.8.0.1
       ${pkgs.iptables}/bin/iptables -D FORWARD -i ens6 -o wg0 -p tcp -m multiport --dports 2022,10080 -j ACCEPT
+
+      # acme-dns
+      ${pkgs.iptables}/bin/iptables -t nat -D PREROUTING -i ens6 -p udp --dport 53 -j DNAT --to-destination 10.8.0.1:53
+      ${pkgs.iptables}/bin/iptables -D FORWARD -i ens6 -o wg0 -p udp --dport 53 -j ACCEPT
+      ${pkgs.iptables}/bin/iptables -t nat -D PREROUTING -i ens6 -p tcp --dport 53 -j DNAT --to-destination 10.8.0.1:53
+      ${pkgs.iptables}/bin/iptables -D FORWARD -i ens6 -o wg0 -p tcp --dport 53 -j ACCEPT
     '';
 
     peers = [
