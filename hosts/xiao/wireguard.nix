@@ -30,10 +30,10 @@ in
       ${pkgs.iptables}/bin/iptables -A FORWARD -i ens6 -o wg0 -p tcp -m multiport --dports 2022,10080 -j ACCEPT
 
       # acme-dns
-      ${pkgs.iptables}/bin/iptables -t nat -A PREROUTING -i ens6 -p udp --dport 53 -j DNAT --to-destination 10.8.0.1:53
-      ${pkgs.iptables}/bin/iptables -A FORWARD -i ens6 -o wg0 -p udp --dport 53 -j ACCEPT
-      ${pkgs.iptables}/bin/iptables -t nat -A PREROUTING -i ens6 -p tcp --dport 53 -j DNAT --to-destination 10.8.0.1:53
-      ${pkgs.iptables}/bin/iptables -A FORWARD -i ens6 -o wg0 -p tcp --dport 53 -j ACCEPT
+      ${pkgs.iptables}/bin/iptables -t nat -A PREROUTING -i ens6 -p udp --dport 53 -j DNAT --to-destination 10.8.0.1:5353
+      ${pkgs.iptables}/bin/iptables -A FORWARD -i ens6 -o wg0 -p udp --dport 5353 -j ACCEPT
+      ${pkgs.iptables}/bin/iptables -t nat -A PREROUTING -i ens6 -p tcp --dport 53 -j DNAT --to-destination 10.8.0.1:5353
+      ${pkgs.iptables}/bin/iptables -A FORWARD -i ens6 -o wg0 -p tcp --dport 5353 -j ACCEPT
     '';
 
     preShutdown = ''
@@ -50,10 +50,10 @@ in
       ${pkgs.iptables}/bin/iptables -D FORWARD -i ens6 -o wg0 -p tcp -m multiport --dports 2022,10080 -j ACCEPT
 
       # acme-dns
-      ${pkgs.iptables}/bin/iptables -t nat -D PREROUTING -i ens6 -p udp --dport 53 -j DNAT --to-destination 10.8.0.1:53
-      ${pkgs.iptables}/bin/iptables -D FORWARD -i ens6 -o wg0 -p udp --dport 53 -j ACCEPT
-      ${pkgs.iptables}/bin/iptables -t nat -D PREROUTING -i ens6 -p tcp --dport 53 -j DNAT --to-destination 10.8.0.1:53
-      ${pkgs.iptables}/bin/iptables -D FORWARD -i ens6 -o wg0 -p tcp --dport 53 -j ACCEPT
+      ${pkgs.iptables}/bin/iptables -t nat -D PREROUTING -i ens6 -p udp --dport 53 -j DNAT --to-destination 10.8.0.1:5353
+      ${pkgs.iptables}/bin/iptables -D FORWARD -i ens6 -o wg0 -p udp --dport 5353 -j ACCEPT
+      ${pkgs.iptables}/bin/iptables -t nat -D PREROUTING -i ens6 -p tcp --dport 53 -j DNAT --to-destination 10.8.0.1:5353
+      ${pkgs.iptables}/bin/iptables -D FORWARD -i ens6 -o wg0 -p tcp --dport 5353 -j ACCEPT
     '';
 
     peers = [
