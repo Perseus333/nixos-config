@@ -17,5 +17,10 @@
     ];
   };
 
+  # Allows non to access the sops-key
+  systemd.tmpfiles.rules = [
+  "d     /var/lib/sops-nix     0700   non    users   -     -"
+];
+
   users.users.root.hashedPassword = "!";
 }
