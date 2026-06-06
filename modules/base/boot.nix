@@ -14,8 +14,7 @@
         enable = true;
         port = 2222;
         authorizedKeys = [
-          "sk-ssh-ed25519@openssh.com AAAAGnNrLXNzaC1lZDI1NTE5QG9wZW5zc2guY29tAAAAIO0nWPCSX+E6Ze1tyHUZABf4gkfTjcxs5fXuqy6EfoYkAAAABHNzaDo= perseus@mycenae" # Yubikey1
-          "sk-ssh-ed25519@openssh.com AAAAGnNrLXNzaC1lZDI1NTE5QG9wZW5zc2guY29tAAAAIPdXXZV1q964neYidTdL/fdyPuIhYzn353qe/G2BP4GvAAAABHNzaDo= perseus@mycenae" # Yubikey2
+          "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPL8XZ7KIhJ7SacYc0efJ+FQyCklHRBFLFhKDR7BPpU2 perseus@kazuha" # default key
         ];
         hostKeys = [
           "/persist/etc/initrd/ssh/initrd_ed25519_key"
