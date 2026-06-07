@@ -31,10 +31,18 @@ in
 
       # acme-dns
       ${pkgs.iptables}/bin/iptables -t nat -A PREROUTING -i ens6 -p udp --dport 53 -j DNAT --to-destination 10.8.0.1:5353
-      ${pkgs.iptables}/bin/iptables -A FORWARD -i ens6 -o wg0 -p udp --dport 5353 -j ACCEPT
+      ${pkgs.iptables}/bin/iptables -t nat -A POSTROUTING -o wg0 -p udp --dport 5353 -j MASQUERADE
+      ${pkgs.iptables}/bin/iptables -I FORWARD -i ens6 -o wg0 -p udp --dport 5353 -j ACCEPT
+
       ${pkgs.iptables}/bin/iptables -t nat -A PREROUTING -i ens6 -p tcp --dport 53 -j DNAT --to-destination 10.8.0.1:5353
-      ${pkgs.iptables}/bin/iptables -A FORWARD -i ens6 -o wg0 -p tcp --dport 5353 -j ACCEPT
-    '';
+      ${pkgs.iptables}/bin/iptables -t nat -A POSTROUTING -o wg0 -p tcp --dport 5353 -j MASQUERADE
+      ${pkgs.iptables}/bin/iptables -I FORWARD -i ens6 -o wg0 -p tcp --dport 5353 -j ACCEPT
+
+      # HTTPS
+      ${pkgs.iptables}/bin/iptables -t nat -A PREROUTING -i ens6 -p tcp --dport 443 -j DNAT --to-destination 10.8.0.1:443
+      ${pkgs.iptables}/bin/iptables -A FORWARD -i ens6 -o wg0 -p tcp --dport 443 -j ACCEPT
+      ${pkgs.iptables}/bin/iptables -t nat -A POSTROUTING -o wg0 -p tcp -d 10.8.0.1 --dport 443 -j MASQUERADE
+     '';
 
     preShutdown = ''
       # Configuration to relay the connection (AI made)
@@ -51,9 +59,17 @@ in
 
       # acme-dns
       ${pkgs.iptables}/bin/iptables -t nat -D PREROUTING -i ens6 -p udp --dport 53 -j DNAT --to-destination 10.8.0.1:5353
+      ${pkgs.iptables}/bin/iptables -t nat -D POSTROUTING -o wg0 -p udp --dport 5353 -j MASQUERADE
       ${pkgs.iptables}/bin/iptables -D FORWARD -i ens6 -o wg0 -p udp --dport 5353 -j ACCEPT
+
       ${pkgs.iptables}/bin/iptables -t nat -D PREROUTING -i ens6 -p tcp --dport 53 -j DNAT --to-destination 10.8.0.1:5353
+      ${pkgs.iptables}/bin/iptables -t nat -D POSTROUTING -o wg0 -p tcp --dport 5353 -j MASQUERADE
       ${pkgs.iptables}/bin/iptables -D FORWARD -i ens6 -o wg0 -p tcp --dport 5353 -j ACCEPT
+
+      # HTTPS
+      ${pkgs.iptables}/bin/iptables -t nat -D PREROUTING -i ens6 -p tcp --dport 443 -j DNAT --to-destination 10.8.0.1:443
+      ${pkgs.iptables}/bin/iptables -D FORWARD -i ens6 -o wg0 -p tcp --dport 443 -j ACCEPT
+      ${pkgs.iptables}/bin/iptables -t nat -D POSTROUTING -o wg0 -p tcp -d 10.8.0.1 --dport 443 -j MASQUERADE
     '';
 
     peers = [
