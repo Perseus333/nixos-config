@@ -17,7 +17,7 @@ in
       dnsProvider      = "acme-dns";
       dnsPropagationCheck = false;
       dnsResolver = "127.0.0.1:53";
-      credentialsFile  = acmeDnsEnv;
+      environmentFile  = acmeDnsEnv;
       group            = "caddy";
     };
   };

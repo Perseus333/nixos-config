@@ -17,7 +17,7 @@
         debug = false;
       };
       database = {
-        engine     = "sqlite3";
+        engine     = "sqlite";
         connection = "/var/lib/acme-dns/acme-dns.db";
       };
       api = {

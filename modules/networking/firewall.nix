@@ -6,6 +6,10 @@
     logRefusedConnections = true;
     trustedInterfaces = [ "wg0" ];
 
+    interfaces.wg0 = {
+      allowedTCPPorts = [ 443 ];
+    };
+    
     allowedTCPPorts = []; 
 
     # Open ports for SSH in local networks and wireguard
