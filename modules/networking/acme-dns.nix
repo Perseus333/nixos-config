@@ -23,7 +23,7 @@
       api = {
         ip                   = "127.0.0.1";
         port                 = 8055;
-        disable_registration = false; # TODO: set to true after registration
+        disable_registration = true; # Set to false for registration
         tls                  = "none";
         corsorigins          = [ "*" ];
         use_header           = false;

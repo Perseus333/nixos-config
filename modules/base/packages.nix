@@ -29,6 +29,7 @@
     # QOL
     unzip
     zip
+    jq
   ];
 
 
