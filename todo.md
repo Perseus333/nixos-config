@@ -1,5 +1,29 @@
 # To Do
 
+## To Do for V1.0
+
+V1.0 will be the first polished (and probably public) version of this repo. 
+
+- [ ] Make LAN clients skip Xiao
+- [ ] Add docs for specific setups of services, particularly:
+  - [ ] Forgejo
+  - [ ] Backrest
+  - [ ] Immich
+  - [ ] Syncthing
+  - [ ] SFTPGo
+- [ ] Fix ytdl-sub
+- [ ] Add docs for creating WireGuard pairs
+- [ ] Add docs explaining the networking
+- [ ] Draw a simplified networking diagram
+- [ ] Remove NixOS generation gist script
+- [ ] Make services create their own dirs in their configs
+- [ ] Add a simple Readme
+- [ ] Add helpful comments in the config
+- [ ] Add TPM?? (I don't dare reboot)
+
+
+## Extra To Do
+
 A list of things to do in the server
 They may or may not be done
 In no particular order:
@@ -11,11 +35,8 @@ In no particular order:
 - [ ] Set up a podcast library
 - [ ] Host my website
 - [ ] Expose public services via Enodia
-- [ ] Ditch Cloudflare completely
 - [ ] Set up a toggleable ProtonVPN relay from Pandora
 - [ ] Add tests before every build
-- [ ] Make the whole config as modular as Isabel Roses' 
-- [ ] Make the disks fully declarative with disko
 - [ ] Set up Windows and Linux VMs
 - [ ] Isolate services in VLANs
 - [ ] Harden physical security (Disk encryption, TPM, Secureboot)
@@ -26,12 +47,10 @@ In no particular order:
 - [ ] Add a monitoring service + dashboard to see most imporant telemetry 
 - [ ] Make it a private Matrix server
 - [ ] Host feediverse accounts/servers like Tranquil PDS
-- [ ] Add Immich to the Glance menu, I forgor
 - [ ] Set up a mail server to receive (and hopefully send) mail
 - [ ] Harden everything
 - [ ] And then harden it some more
 - [ ] Draw a cool network topology with services and everything
-- [ ] Make all service configs that support it be declarative
 - [ ] Set up OIDC with Authelia for supported services
 - [ ] Comment config where useful
 
