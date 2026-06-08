@@ -7,12 +7,12 @@
 
   services.kavita = {
     enable = true;
-    dataDir = "/srv/data/kavita";
+    dataDir = "/var/lib/kavita";
     tokenKeyFile = config.sops.secrets."kavita-token".path;
   };
 
   systemd.tmpfiles.rules = [
-    "d /srv/data/kavita     0750 non kavita -"
+    "d /var/lib/kavita      0750 non kavita -"
     "d /srv/media/grayscale 0750 non kavita -"
     "d /srv/media/lectern   0750 non kavita -"
   ];

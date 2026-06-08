@@ -15,7 +15,7 @@
       };
       storage = {
         type = "multifilesystem";
-        filesystem_folder = "/srv/data/radicale";
+        filesystem_folder = "/var/lib/radicale";
       };
     };
   };
