@@ -12,6 +12,11 @@
       };
       init.defaultBranch = "main";
     };
+    signing = {
+      format = "openpgp";
+      key = "219191D3F14A5E8F";
+      signByDefault = true;
+    };
   };
  
   programs.bash.bashrcExtra = ''

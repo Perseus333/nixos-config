@@ -5,4 +5,11 @@
   security.sudo.extraConfig = ''
     Defaults timestamp_timeout=5
   '';
+
+  # Enables GPG for signing commits
+  programs.gnupg.agent = {
+    enable = true;
+    enableSSHSupport = true;
+    pinentryPackage = pkgs.pinentry-curses;
+  };
 }
