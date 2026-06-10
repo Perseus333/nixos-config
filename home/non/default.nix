@@ -10,14 +10,19 @@
         name = "Perseus333";
         email = "perseusmith73@gmail.com";
       };
+      gpg.format = "ssh";
       init.defaultBranch = "main";
+      gpg.ssh.allowedSignersFile = "${config.home.homeDirectory}/.ssh/allowed_signers";
     };
     signing = {
-      format = "openpgp";
-      key = "219191D3F14A5E8F";
+      key = "${config.home.homeDirectory}/.ssh/id_ed25519.pub";
       signByDefault = true;
     };
   };
+
+  home.file.".ssh/allowed_signers".text = ''
+    * ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILmCmYum3h6kuAsPtUva5LDCkp+fkhTzndJFoBx+Ebcx non@venti
+  '';
  
   programs.bash.bashrcExtra = ''
     rebuild-nixos() {
