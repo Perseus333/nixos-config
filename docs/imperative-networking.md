@@ -70,7 +70,7 @@ In Porkbun, or whatever your registrar may be, you will need to set up the DNS r
 |Type|Host|Value|Use|
 |---|---|---|---|
 |A|*.perseuslynx.dev|XIAO_IP|Subdomains|
-|A|perseuslynx.dev|XIAO_IP|Base domain (this may change)|
+|ALIAS|perseuslynx.dev|perseus333.github.io|Base domain (this may change if self-hosting the website)|
 |CNAME|_acme-challenge.perseuslynx.dev|ACME_DNS_FULL_DOMAIN|DNS-01 Challenge|
 |NS|auth.perseuslynx.dev|acme-ns.perseuslynx.dev.|Name server|
 
