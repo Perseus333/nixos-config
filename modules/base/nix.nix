@@ -1,10 +1,18 @@
 { config, lib, pkgs, ... }:
 
 {
+  # This should not have to be an option in 26.05
   nix.settings.experimental-features = [ "flakes" "nix-command" ];
+  # Removes redundant files in the nix store
   nix.optimise.automatic = true;
 
-  # If you have too many generations use this script
+  # For more flexibility use this script
   # https://nixos.wiki/wiki/NixOS_Generations_Trimmer
-  # TODO: Configure nix.gc to save last 5 generations
+  nix.gc = {
+    automatic = true;
+    # Technically it works because nix.gc is a wrapper for nix-collect-garbage, 
+    # which for this option is equivalent to nix-env --delete-generations,
+    # which supports specifying an amount. Idk if it works, but it "compiles".
+    options = "--delete-generations +10";
+  };
 }
