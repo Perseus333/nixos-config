@@ -16,4 +16,11 @@
     "d /srv/media/grayscale 0750 non kavita -"
     "d /srv/media/lectern   0750 non kavita -"
   ];
+
+  systemd.services.kavita = {
+    serviceConfig = {
+      StateDirectory = "kavita";
+      ReadWritePaths = [ "/var/lib/kavita" ];
+    };
+  };
 }
