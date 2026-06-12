@@ -13,7 +13,7 @@
         DOMAIN = "https://vault.perseuslynx.dev";
         SIGNUPS_ALLOWED = false;
         ROCKET_ADDRESS = "127.0.0.1";
-        ROCKET_PORT = 8222;
+        ROCKET_PORT = config.ports.vaultwarden;
     };
   };
 }

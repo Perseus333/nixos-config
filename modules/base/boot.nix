@@ -13,7 +13,7 @@
       # Main resource: https://wiki.nixos.org/wiki/Remote_disk_unlocking
       network.ssh = {
         enable = true;
-        port = 2222;
+        port = config.ports.initrd-ssh;
         authorizedKeys = [
           "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPL8XZ7KIhJ7SacYc0efJ+FQyCklHRBFLFhKDR7BPpU2 perseus@kazuha"
         ];

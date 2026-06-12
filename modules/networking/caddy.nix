@@ -37,8 +37,6 @@ in {
       ) cfg.services;
     };
 
-    networking.firewall.allowedTCPPorts = lib.mkIf cfg.openFirewall [ 443 ];
-
     services.caddy.globalConfig = ''
       auto_https disable_redirects
     '';

@@ -4,7 +4,7 @@
   services.open-webui = {
     enable = true;
     host = "127.0.0.1";
-    port = 1212;
+    port = config.ports.open-webui;
     environment = {
       RAG_WEB_SEARCH_ENGINE = "searxng";
       SEARXNG_QUERY_URL = "http://127.0.0.1:8888/search?q=<query>"; 

@@ -9,7 +9,7 @@
       server = {
         DOMAIN = "git.perseuslynx.dev";
         ROOT_URL = "https://git.perseuslynx.dev/"; 
-        HTTP_PORT = 3000;
+        HTTP_PORT = config.ports.forgejo;
       };
       DEFAULT.APP_NAME = "Hefesto";
       service.DISABLE_REGISTRATION = true;

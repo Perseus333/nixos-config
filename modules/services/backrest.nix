@@ -1,5 +1,5 @@
-# modules/services/backrest.nix
 { config, lib, pkgs, ... }:
+
 {
   fileSystems."/mnt/backup" = {
     device = "/dev/disk/by-label/backup";
@@ -30,7 +30,7 @@
     script = "backrest";
     path = [ pkgs.backrest pkgs.restic pkgs.rclone ];
     environment = {
-      BACKREST_PORT = "127.0.0.1:9898";
+      BACKREST_PORT = "127.0.0.1:${toString config.ports.backrest}";
       BACKREST_DATA = "/var/lib/backrest";
     };
     serviceConfig = {

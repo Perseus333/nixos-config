@@ -1,17 +1,17 @@
 {config, ... }:
 
-{
+let
+  ports = config.ports;
+in {
   config.firewall-zones.zones = {
 
     # Anyone on the internet has access to these ports
     # Relay: open everywhere
     # Server: open in wg0, and to LAN IPs
     publicPorts = [
-      # acme-dns DNS-01 challenge solver
-      { port = 53; proto = "tcp"; targetPort = 5353; }
-      { port = 53; proto = "udp"; targetPort = 5353; }
-      # MC server
-      { port = 25565; proto = "tcp";  }
+      { port = ports.dns; proto = "tcp"; targetPort = ports.acme-dns; }
+      { port = ports.dns; proto = "udp"; targetPort = ports.acme-dns; }
+      { port = ports.minecraft; proto = "tcp";  }
     ];
 
     # Devices in the LAN or WireGuard
@@ -19,10 +19,10 @@
     # Server: open in wg0, and to LAN IPs
     lanPorts = [
       # Unbound DNS, adblock without WG
-      { port = 53;    proto = "tcp"; }
-      { port = 53;    proto = "udp"; }
-      # Jellyfin, to work in smartTVs
-      { port = 8096;  proto = "tcp"; }
+      { port = ports.dns;    proto = "tcp"; }
+      { port = ports.dns;    proto = "udp"; }
+      # For Jellyfin to work in smartTVs
+      { port = ports.jellyfin;  proto = "tcp"; }
     ];
 
     # Only accessible through WireGuard
@@ -30,11 +30,9 @@
     # Server: open only in wg0
     wgOnlyPorts = [
       # Caddy, aka services' interfaces
-      { port = 443;   proto = "tcp"; }
-      # SFTPGo SFTP
-      { port = 2022;  proto = "tcp"; }
-      # SFTPGo WebDAV
-      { port = 10080; proto = "tcp"; }
+      { port = ports.https;   proto = "tcp"; }
+      { port = ports.sftpgo-sftp;   proto = "tcp"; }
+      { port = ports.sftpgo-webdav; proto = "tcp"; }
     ];
   };
 }

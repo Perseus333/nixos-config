@@ -10,6 +10,7 @@
     ../../modules/base/packages.nix
     ../../modules/base/security.nix
     ../../modules/base/users.nix
+    ../../modules/networking/port-map.nix
     ../../modules/networking/ssh.nix
     ../../modules/networking/fail2ban.nix
     ../../modules/networking/wireguard.nix

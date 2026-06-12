@@ -21,12 +21,13 @@
     ../../modules/networking/acme-dns.nix
     ../../modules/networking/blocklist.nix
     ../../modules/networking/caddy.nix
-    ../../modules/networking/ssh.nix
     ../../modules/networking/ethernet.nix
-    ../../modules/networking/wireless.nix
     ../../modules/networking/fail2ban.nix
-    ../../modules/networking/wireguard.nix
+    ../../modules/networking/port-map.nix
+    ../../modules/networking/ssh.nix
     ../../modules/networking/unbound.nix
+    ../../modules/networking/wireless.nix
+    ../../modules/networking/wireguard.nix
     ../../modules/services/backrest.nix
     ../../modules/services/forgejo.nix
     ../../modules/services/glance.nix

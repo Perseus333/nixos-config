@@ -1,9 +1,9 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, ... }:
 
 {
   services.openssh = {
     enable = true;
-    ports = [ 4684 ];
+    ports = [ config.ports.ssh ];
     openFirewall = false;
     settings = {
       PermitRootLogin = "no";

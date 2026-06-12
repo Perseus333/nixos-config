@@ -7,6 +7,7 @@
 
   services.kavita = {
     enable = true;
+    settings.Port = config.ports.kavita;
     dataDir = "/var/lib/kavita";
     tokenKeyFile = config.sops.secrets."kavita-token".path;
   };

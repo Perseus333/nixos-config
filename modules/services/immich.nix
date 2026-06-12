@@ -11,7 +11,7 @@ in
   services.immich = {
     enable = true;
     host = "127.0.0.1";
-    port = 2283;
+    port = config.ports.immich;
     mediaLocation = "/srv/media/gallery";
     environment = {
       # Keep models loaded indefinitely

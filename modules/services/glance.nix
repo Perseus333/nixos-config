@@ -13,7 +13,7 @@ in
     enable = true;
     settings = {
 
-      server.port = 5678;
+      server.port = config.ports.glance;
       theme = {
         background-color = "206 13.5 20.4";
         primary-color = "41 31.8 74.7";

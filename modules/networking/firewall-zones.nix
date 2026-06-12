@@ -120,7 +120,7 @@ in {
     (lib.mkIf (cfg.role == "relay") {
       networking.firewall = {
         # Only SSH needs to be open on wg0 since the other ports are forwarded
-        interfaces.wg0.allowedTCPPorts = [ 4684 ];
+        interfaces.wg0.allowedTCPPorts = [ config.ports.ssh ];
       };
     })
   ];

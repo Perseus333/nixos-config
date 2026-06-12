@@ -5,7 +5,7 @@
     enable = true;
     settings = {
       general = {
-        listen   = "0.0.0.0:5353";
+        listen   = "0.0.0.0:${toString config.ports.acme-dns}";
         protocol = "both";
         domain   = "auth.perseuslynx.dev";
         nsname   = "acme-ns.perseuslynx.dev";
@@ -22,7 +22,7 @@
       };
       api = {
         ip                   = "127.0.0.1";
-        port                 = 8055;
+        port                 = config.ports.acme-dns-api;
         disable_registration = true; # Set to false for registration
         tls                  = "none";
         corsorigins          = [ "*" ];

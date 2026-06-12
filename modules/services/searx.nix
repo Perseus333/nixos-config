@@ -14,7 +14,7 @@
 
     uwsgiConfig = {
       socket = "/run/searx/searx.sock";
-      http = ":8888";
+      http = ":${toString config.ports.searxng}";
       chmod-socket = "660";
     };
 
@@ -58,7 +58,7 @@
       environmentFile = config.sops.secrets."searx-env".path;
       server = {
         base_url = "https://search.perseuslynx.dev";
-        port = 8888;
+        port = config.ports.searxng;
         bind_address = "127.0.0.1";
         secret_key = "@SEARX_SECRET@";
         limiter = false;

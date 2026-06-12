@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ osConfig, config, pkgs, ... }:
 
 {
   home.stateVersion = "25.11";
@@ -57,14 +57,14 @@
         user = "non";
         identityFile = "~/.ssh/id_yubikey_3755";
         forwardAgent = true;
-        port = 4684;
+        port = osConfig.ports.ssh;
       };
       "xiao-wg" = {
         hostname = "10.8.0.5";
         user = "non";
         identityFile = "~/.ssh/id_yubikey_3755";
         forwardAgent = true;
-        port = 4684;
+        port = osConfig.ports.ssh;
       };
     };
   };
