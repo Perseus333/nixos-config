@@ -6,7 +6,7 @@
     settings = {
       httpd = {
         bindings = [{
-          port = 57790;
+          port = 5779;
           address = "127.0.0.1";
           enable_web_admin = true;
           enable_web_client = true;
