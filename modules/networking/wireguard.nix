@@ -18,6 +18,11 @@ let
 
 in {
 
+  imports = [
+    ./firewall-zones.nix
+    ./fw-zones-conf.nix
+  ];
+
   config = lib.mkMerge [
 
     {
