@@ -11,10 +11,13 @@
     ../../modules/base/security.nix
     ../../modules/base/users.nix
     ../../modules/networking/firewall.nix
+    ../../modules/networking/firewall-zones.nix
     ../../modules/networking/ssh.nix
     ../../modules/networking/fail2ban.nix
     ../../modules/networking/wireguard.nix
   ];
+
+  firewall-zones.role = "relay";
 
   #sops.secrets.xiao-nix-signing-key = {
   #  owner = "root";
@@ -27,9 +30,6 @@
     hostName = "xiao";
     hostId = "238579e0";
   };
-
-  # Enable relay
-  boot.kernel.sysctl."net.ipv4.ip_forward" = 1;
 
   # Timezone
   time.timeZone = "Europe/London";

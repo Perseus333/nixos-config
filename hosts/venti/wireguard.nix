@@ -1,4 +1,4 @@
-{ config, pkgs, lib, secrets, ... }:
+{ config, lib, secrets, ... }:
 let
   wg-secrets = "${secrets}/services/wireguard.yaml";
 in

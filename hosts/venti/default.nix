@@ -22,6 +22,7 @@
     ../../modules/networking/blocklist.nix
     ../../modules/networking/caddy.nix
     ../../modules/networking/firewall.nix
+    ../../modules/networking/firewall-zones.nix
     ../../modules/networking/ssh.nix
     ../../modules/networking/ethernet.nix
     ../../modules/networking/wireless.nix
@@ -45,6 +46,8 @@
     ../../modules/services/vaultwarden.nix
     ../../modules/services/ytdl-sub.nix
   ];
+
+  firewall-zones.role = "server";
 
   # Host identification
   networking = {
