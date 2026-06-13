@@ -13,8 +13,10 @@
       # Logs all connection attempts
       LogLevel = "VERBOSE";
 
-      # Replace Fail2ban with PerSourcePenalties
+      # Replaced Fail2ban with PerSourcePenalties
       # https://text.tchncs.de/senioradmin/are-you-still-banning-or-do-you-already-penalize
+      MaxAuthTries = 3;
+      PerSourcePenalties = "crash:3600s authfail:3600s max:86400s";
     };
   };
   /* Disabled temporarily
