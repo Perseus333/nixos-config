@@ -15,4 +15,17 @@
     serviceConfig.Type = "oneshot";
     script = "zfs rollback -r rpool/local/root@blank && echo 'Rollback complete'";
   };
+
+  environment.persistence."/persist" = {
+    hideMounts = true;
+    directories = [
+      "/var/lib"
+      "/var/log"
+      "/etc/ssh"
+      "/etc/NetworkManager/system-connections"
+    ];
+    files = [
+      "/etc/machine-id"
+    ];
+  };
 }

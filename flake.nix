@@ -65,6 +65,7 @@
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.users.non = import ./home/non;
+            home-manager.backupFileExtension = "bak";
           }
 
           # Minecraft configuration
@@ -100,6 +101,7 @@
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.users.non = import ./home/non;
+            home-manager.backupFileExtension = "bak";
           }
         ];
       };
