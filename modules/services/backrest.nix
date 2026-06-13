@@ -45,6 +45,4 @@
       MemoryDenyWriteExecute   = false; 
     };
   };
-
-  environment.systemPackages = with pkgs; [ backrest ];
 }
