@@ -28,4 +28,6 @@
     MemoryDenyWriteExecute = lib.mkForce false;
     SystemCallFilter = [ "@system-service" "@network-io" "@memlock" "~@privileged" ];
   };
+
+  environment.systemPackages = with pkgs; [ forgejo forgejo-cli ];
 }

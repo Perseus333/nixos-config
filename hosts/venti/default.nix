@@ -54,16 +54,6 @@
     hostId = "e281e2d1";
   };
 
-  # Host-specific packages
-  environment.systemPackages = with pkgs; [
-    forgejo
-    forgejo-cli
-    authelia
-    open-webui
-    immich-cli
-    backrest
-  ];
-
   # Timezone
   time.timeZone = "Europe/London";
 

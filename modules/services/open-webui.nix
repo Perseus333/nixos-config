@@ -25,4 +25,6 @@
   };
 
   users.users.non.extraGroups = [ "video" "render" ];
+
+  environment.systemPackages = with pkgs; [ open-webui ];
 }

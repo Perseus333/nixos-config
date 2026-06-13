@@ -35,4 +35,6 @@ in
   systemd.services.immich-server.serviceConfig.ReadWritePaths = [
     "/srv/media/gallery"
   ];
+
+  environment.systemPackages = with pkgs; [ immich-cli ];
 }
