@@ -1,14 +1,18 @@
 { config, lib, secrets, ... }:
 let
   wg-secrets = "${secrets}/services/wireguard.yaml";
+
+  secret-names = [
+    "wg-xiao-private-key"
+    "wg-venti-xiao-psk"
+    "wg-fedora-xiao-psk"
+    "wg-xiaomi-xiao-psk"
+    "wg-s5e-xiao-psk"
+    "wg-mm-xiao-psk"
+  ];
 in
 {
-  sops.secrets.wg-xiao-private-key = { sopsFile = "${wg-secrets}"; };
-  sops.secrets.wg-venti-xiao-psk   = { sopsFile = "${wg-secrets}"; };
-  sops.secrets.wg-fedora-xiao-psk  = { sopsFile = "${wg-secrets}"; };
-  sops.secrets.wg-xiaomi-xiao-psk  = { sopsFile = "${wg-secrets}"; };
-  sops.secrets.wg-s5e-xiao-psk     = { sopsFile = "${wg-secrets}"; };
-  sops.secrets.wg-mm-xiao-psk      = { sopsFile = "${wg-secrets}"; };
+  sops.secrets = lib.genAttrs secret-names (name: { sopsFile = wg-secrets; });
 
   networking.wireguard.interfaces.wg0 = {
     ips = [ "10.8.0.5/24" ];
