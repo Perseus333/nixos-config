@@ -9,6 +9,7 @@ let
     "wg-xiaomi-xiao-psk"
     "wg-s5e-xiao-psk"
     "wg-mm-xiao-psk"
+    "wg-gos-xiao-psk"
   ];
 in
 {
@@ -50,6 +51,12 @@ in
         publicKey = "3a9hbEgNZ/XCMc6t+v8wjBv7iL7394V397EeGoz0phY=";
         presharedKeyFile = config.sops.secrets.wg-mm-xiao-psk.path;
         allowedIPs = [ "10.8.0.6/32" ];
+      }
+      {
+        # grapheneos-phone
+        publicKey = "zkVsHUkAvlzHQQYCOAbFzTu1KJocGbZZN5Debn9cSU0="
+        presharedKeyFile = config.sops.secrets.wg-gos-xiao-psk.path;
+        allowedIPs = [ "10.8.0.7/32" ];
       }
     ];
   };
