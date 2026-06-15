@@ -1,10 +1,10 @@
 { config, lib, ... }:
 
 let
-  cfg = config.system.zfs;
+  cfg = config.ivy.zfs;
 in
 {
-  options.system.zfs = {
+  options.ivy.zfs = {
     enable = lib.mkEnableOption "Enable ZFS configuration";
   };
 

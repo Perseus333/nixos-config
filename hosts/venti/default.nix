@@ -10,27 +10,24 @@
     ./hardware.nix
     ./wireguard.nix
     ../../modules/base
-    ../../modules/networking/acme.nix
-    ../../modules/networking/acme-dns.nix
-    ../../modules/networking/blocklist.nix
-    ../../modules/networking/caddy.nix
-    ../../modules/networking/ethernet.nix
-    ../../modules/networking/fail2ban.nix
-    ../../modules/networking/port-map.nix
-    ../../modules/networking/ssh.nix
-    ../../modules/networking/unbound.nix
-    ../../modules/networking/wireless.nix
-    ../../modules/networking/wireguard.nix
+    ../../modules/networking
     ../../modules/services
   ];
 
-  firewall-zones.role = "server";
-  system.zfs.enable = true;
+  ivy = {
+    # Server role assigns firewall zones & networking modules
+    roles.server = {
+      enable = true;
+      # Toggle other options if necessary
+    };
+    zfs.enable = true;
+  };
 
   # Host identification
   networking = {
     hostName = "venti";
     hostId = "e281e2d1";
+    wireless.enable = true;
   };
 
   # Timezone

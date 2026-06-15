@@ -2,7 +2,6 @@
 
 {
   services.unbound = {
-    enable = true;
     settings = {
       server = {
         interface = [ 

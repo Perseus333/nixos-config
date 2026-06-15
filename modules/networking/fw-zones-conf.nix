@@ -3,7 +3,7 @@
 let
   ports = config.ports;
 in {
-  config.firewall-zones.zones = {
+  config.ivy.firewall-zones.zones = {
 
     # Anyone on the internet has access to these ports
     # Relay: open everywhere

@@ -22,7 +22,6 @@
 
   networking = {
     wireless = {
-      enable = true;
       secretsFile = config.sops.templates."wireless-secrets".path;
       networks = {
         "network1" = {
@@ -43,6 +42,7 @@
     nameservers = [ "10.8.0.1" ];
   };
 
+  # TODO: set the interface as an option
   systemd.services.wpa_supplicant = {
     after = [ "sys-subsystem-net-devices-wlp5s0.device" ];
     bindsTo = [ "sys-subsystem-net-devices-wlp5s0.device" ];

@@ -28,7 +28,6 @@ in {
 
   config = lib.mkIf (cfg.services != {}) {
     services.caddy = {
-      enable = true;
       virtualHosts = lib.mapAttrs' (sub: port:
         lib.nameValuePair (mkDomain sub) {
           useACMEHost = baseDomain;

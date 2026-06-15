@@ -1,8 +1,9 @@
 { config, lib, pkgs, ... }:
 
 let
-  cfg = config.firewall-zones;
+  cfg = config.ivy.firewall-zones;
   z   = cfg.zones;
+  roles = config.ivy.roles;
 
   backendPort = p: if p.targetPort != null then p.targetPort else p.port;
 
@@ -30,18 +31,7 @@ let
 
 in {
 
-  options.firewall-zones = {
-
-    role = lib.mkOption {
-      type    = lib.types.enum [ "relay" "server" "none" ];
-      default = "none";
-      description = ''
-        Network role of this machine:
-          "server": home server (Venti). Opens all zone ports on wg0, lanPorts are also accessible from 192.168.0.0/16.
-          "relay":  public VPS (Xiao) to go through CGNAT, forwards everything, only allows SSH.
-          "none":   no zone-based rules.
-      '';
-    };
+  options.ivy.firewall-zones = {
 
     # Relay-specific config for port forwarding
     relay = {
@@ -97,8 +87,8 @@ in {
       };
     }
 
-    # SERVER: Venti
-    (lib.mkIf (cfg.role == "server") {
+    # SERVER settings: Venti
+    (lib.mkIf roles.server.enable {
       networking.firewall = {
 
         interfaces.wg0 = {
@@ -116,8 +106,8 @@ in {
       };
     })
 
-    # RELAY: Xiao
-    (lib.mkIf (cfg.role == "relay") {
+    # RELAY settings: Xiao
+    (lib.mkIf roles.relay.enable {
       networking.firewall = {
         # Only SSH needs to be open on wg0 since the other ports are forwarded
         interfaces.wg0.allowedTCPPorts = [ config.ports.ssh ];

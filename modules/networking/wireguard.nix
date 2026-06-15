@@ -1,7 +1,8 @@
 { config, lib, ... }:
 
 let
-  cfg = config.firewall-zones;
+  cfg = config.ivy.firewall-zones;
+  roles = config.ivy.roles;
 
   backendPort = p: if p.targetPort != null then p.targetPort else p.port;
 
@@ -31,7 +32,7 @@ in {
     }
 
     # RELAY ONLY
-    (lib.mkIf (cfg.role == "relay") {
+    (lib.mkIf roles.relay.enable {
 
       # Required for the relay to forward packets between interfaces
       boot.kernel.sysctl."net.ipv4.ip_forward" = 1;

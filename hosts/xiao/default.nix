@@ -5,18 +5,12 @@
     #./hardening-assignments.nix
     ./hardware.nix
     ./wireguard.nix
-    ../../modules/base/home.nix
-    ../../modules/base/nix.nix
-    ../../modules/base/packages.nix
-    ../../modules/base/security.nix
-    ../../modules/base/users.nix
-    ../../modules/networking/port-map.nix
-    ../../modules/networking/ssh.nix
-    ../../modules/networking/fail2ban.nix
-    ../../modules/networking/wireguard.nix
+    ../../modules/base
+    ../../modules/networking
   ];
 
-  firewall-zones.role = "relay";
+  # This configures most stuff
+  ivy.roles.relay.enable = true;
 
   #sops.secrets.xiao-nix-signing-key = {
   #  owner = "root";
