@@ -29,5 +29,7 @@ in
     boot.supportedFilesystems = [ "zfs" ];
     boot.zfs.devNodes = "/dev/disk/by-id";
     boot.kernelParams = [ "zfs.zfs_arc_max=4294967296" ]; # Max 4 GB for ARC
+    # Improves ZFS security. Also, NixOS complains otherwiser
+    boot.zfs.forceImportRoot = false;
   };
 }
