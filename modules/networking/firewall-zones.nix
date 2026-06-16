@@ -85,6 +85,9 @@ in {
         enable                = true;
         logRefusedConnections = true;
       };
+
+      # More readable version of iptables
+      networking.nftables.enable = true;
     }
 
     # SERVER settings: Venti
@@ -98,9 +101,9 @@ in {
         };
 
         # Open lanPorts inside the LAN
-        extraCommands = lib.concatStringsSep "\n" (
+        extraInputRules = lib.concatStringsSep "\n" (
           (map (p:
-            "${pkgs.iptables}/bin/iptables -A INPUT -s 192.168.0.0/16 -p ${p.proto} --dport ${toString (backendPort p)} -j ACCEPT"
+            "ip saddr 192.168.0.0/16 ${p.proto} dport ${toString (backendPort p)} accept"
           ) z.lanPorts)
         );
       };

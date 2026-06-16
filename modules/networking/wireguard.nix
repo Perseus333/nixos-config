@@ -9,6 +9,7 @@ let
   ext = cfg.relay.externalInterface;
   dst = cfg.relay.target;
 
+  # Only forwards the public traffic
   dnatRules = lib.concatStringsSep "\n      " (map (p:
     "iifname \"${ext}\" ${p.proto} dport ${toString p.port} dnat to ${dst}:${toString (backendPort p)}"
   ) cfg.zones.publicPorts);
@@ -36,9 +37,6 @@ in {
 
       # Required for the relay to forward packets between interfaces
       boot.kernel.sysctl."net.ipv4.ip_forward" = 1;
-
-      # More readable version of iptables
-      networking.nftables.enable = true;
 
       networking.nftables.tables.wg-relay = {
         family = "ip";
