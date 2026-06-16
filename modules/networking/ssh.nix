@@ -16,7 +16,13 @@
       # Replaced Fail2ban with PerSourcePenalties
       # https://text.tchncs.de/senioradmin/are-you-still-banning-or-do-you-already-penalize
       MaxAuthTries = 3;
-      PerSourcePenalties = "crash:3600s authfail:3600s max:86400s";
+      PerSourcePenalties = lib.concatStringsSep " " [
+        "crash:3h" # Probably an exploit
+        "invaliduser:5m"
+        "authfail:5m" # If it gets this far, it's not a bot
+        "max:24h"
+        "overflow:deny-all" # Denies everything if logs are filled
+      ];
     };
   };
   /* Disabled temporarily
