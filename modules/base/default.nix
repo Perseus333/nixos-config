@@ -1,6 +1,7 @@
 { ... }:
 {
   imports = [
+    ../../modules/base/gen-docs.nix
     ../../modules/base/nix.nix
     ../../modules/base/packages.nix
     ../../modules/base/roles.nix

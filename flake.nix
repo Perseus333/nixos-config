@@ -118,5 +118,10 @@
       checks = builtins.mapAttrs
         (system: deployLib: deployLib.deployChecks self.deploy)
         deploy-rs.lib;
+      
+      # Docs builder
+      packages.${system} = {
+        ivy-docs = self.nixosConfigurations.venti.config.system.build.ivy-docs;
+      };
     };
 }
