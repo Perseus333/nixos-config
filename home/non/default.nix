@@ -51,7 +51,7 @@
   programs.ssh = {
     enable = true;
     enableDefaultConfig = false;
-    matchBlocks = {
+    settings = {
       "venti-wg" = {
         hostname = "10.8.0.1";
         user = "non";
