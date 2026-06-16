@@ -15,4 +15,7 @@
     # which supports specifying an amount. Idk if it works, but it "compiles".
     options = "--delete-generations +10";
   };
+
+  # Allow unfree packages because several of the ones I run suddenly are
+  # nixpkgs.config.allowUnfree = true;
 }
