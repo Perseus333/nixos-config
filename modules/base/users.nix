@@ -6,7 +6,6 @@
   };
   users.users.non = {
     isNormalUser = true;
-    initialPassword = "123456";
     extraGroups = [ "wheel" "samba" "sftpgo"];
     hashedPasswordFile = config.sops.secrets.non-pwd-hash.path;
     openssh.authorizedKeys.keys = [
@@ -19,8 +18,8 @@
 
   # Allows non to access the sops-key
   systemd.tmpfiles.rules = [
-  "d     /var/lib/sops-nix     0700   non    users   -     -"
-];
+    "d /var/lib/sops-nix 0700 non users - -"
+  ];
 
   users.users.root.hashedPassword = "!";
 }
