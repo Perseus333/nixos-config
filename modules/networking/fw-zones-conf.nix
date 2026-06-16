@@ -30,7 +30,8 @@ in {
     # Server: open only in wg0
     wgOnlyPorts = [
       # Caddy, aka services' interfaces
-      { port = ports.https;   proto = "tcp"; }
+      { port = ports.https; proto = "tcp"; }
+      { port = ports.ssh;   proto = "tcp"; }
       { port = ports.sftpgo-sftp;   proto = "tcp"; }
       { port = ports.sftpgo-webdav; proto = "tcp"; }
     ];
