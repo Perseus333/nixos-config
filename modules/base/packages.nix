@@ -10,6 +10,7 @@
     tree
     wget
     btop
+    ncdu
 
     # Networking
     wpa_supplicant
