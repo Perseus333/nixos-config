@@ -54,7 +54,7 @@ in
       }
       {
         # grapheneos-phone
-        publicKey = "zkVsHUkAvlzHQQYCOAbFzTu1KJocGbZZN5Debn9cSU0="
+        publicKey = "zkVsHUkAvlzHQQYCOAbFzTu1KJocGbZZN5Debn9cSU0=";
         presharedKeyFile = config.sops.secrets.wg-gos-xiao-psk.path;
         allowedIPs = [ "10.8.0.7/32" ];
       }
