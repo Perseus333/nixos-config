@@ -42,7 +42,7 @@
 
       ytdl_options = {
         # Temp, make true when initial download ends
-        break_on_existing = false;
+        break_on_existing = true;
         # Ignore problematic files
         ignoreerrors = true;
         # Add YouTube cookies to avoid bot captchas
@@ -75,32 +75,21 @@
         # No max downloads per subscription
       };
     };
-    # TODO: Manage playlists with nix-sops
     # TODO: Add videos playlist & preset
     subscriptions."ingest-music" = {
-      "hype"       = "https://music.youtube.com/playlist?list=PL_UY8eCGCOx6GbttquZ5KId1daZWrYWqC";
-      "kroh"       = "https://music.youtube.com/playlist?list=OLAK5uy_n7aORjT0G08wRX2kEeFqp52uRHSpN2c4M";
-      "derivakat"  = "https://music.youtube.com/playlist?list=OLAK5uy_lq762tCC4lzug2NnrbQPx9MJXcbG2NhMg";
-      "frieren"    = "https://music.youtube.com/playlist?list=OLAK5uy_nU1AWxwD4OB0TdGIALStJA-GhHU3_EPT8";
-      "j-hisaishi" = "https://music.youtube.com/playlist?list=OLAK5uy_nQMHvDUZuCx725SBVmyK3i8ypdArHF39M";
-      "godfather"  = "https://music.youtube.com/playlist?list=OLAK5uy_lBOT3dgUkt4eJX37rd-k8xELt78K8TSG8";
-      "speedrun"   = "https://music.youtube.com/playlist?list=PL_UY8eCGCOx6if7urYOFGk-cOevUz2z0v";
+      "general" = "https://music.youtube.com/playlist?list=PL_UY8eCGCOx7qTwXKcFfJsQXhaXqZvPgn";
+      "classic" = "https://music.youtube.com/playlist?list=PL_UY8eCGCOx7JtjUaAYi62XolmPkSO0o1";
+      # Add artists later
     };
   };
 
   # Ensures that the directories exist
   systemd.tmpfiles.rules = [
-    "d /srv/data/yt-dlp                    0755 ytdl-sub ytdl-sub -"
-    "d /srv/data/yt-dlp/cache              0755 ytdl-sub ytdl-sub -"
-    "d /srv/media/harmonics                0755 ytdl-sub ytdl-sub -"
-    "d /srv/media/harmonics/kroh           0755 ytdl-sub ytdl-sub -"
-    "d /srv/media/harmonics/derivakat      0755 ytdl-sub ytdl-sub -"
-    "d /srv/media/harmonics/frieren        0755 ytdl-sub ytdl-sub -"
-    "d /srv/media/harmonics/speedrun       0755 ytdl-sub ytdl-sub -"
-    "d /srv/media/harmonics/j-hisaishi     0755 ytdl-sub ytdl-sub -"
-    "d /srv/media/harmonics/godfather      0755 ytdl-sub ytdl-sub -"
-    "d /srv/media/harmonics/hype           0755 ytdl-sub ytdl-sub -"
-    "d /srv/media/harmonics/dlh            0755 ytdl-sub ytdl-sub -"
+    "d /srv/data/yt-dlp              0755 ytdl-sub ytdl-sub -"
+    "d /srv/data/yt-dlp/cache        0755 ytdl-sub ytdl-sub -"
+    "d /srv/media/harmonics          0755 ytdl-sub ytdl-sub -"
+    "d /srv/media/harmonics/general  0755 ytdl-sub ytdl-sub -"
+    "d /srv/media/harmonics/classic  0755 ytdl-sub ytdl-sub -"
   ];
 }
 
