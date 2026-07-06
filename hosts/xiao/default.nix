@@ -24,9 +24,6 @@
     hostId = "238579e0";
   };
 
-  # Timezone
-  time.timeZone = "Europe/London";
-
   boot.loader.systemd-boot.enable = lib.mkForce false;
   boot.loader.grub = {
     enable = true;

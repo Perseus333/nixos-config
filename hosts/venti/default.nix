@@ -30,9 +30,6 @@
     wireless.enable = true;
   };
 
-  # Timezone
-  time.timeZone = "Europe/London";
-
   # Simple security logs
   services.journald = {
     extraConfig = ''
