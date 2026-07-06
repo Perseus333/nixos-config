@@ -35,5 +35,5 @@
     };
   };
 
-  users.users.ytdl-sub.extraGroups = [ "private-files" ];
+  users.users.sftpgo.extraGroups = [ "private-files" ];
 }
