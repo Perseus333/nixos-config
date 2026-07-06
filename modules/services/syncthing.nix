@@ -52,6 +52,11 @@
     };
   };
 
+  systemd.tmpfiles.rules = [
+    "d  /srv/files/hot-storage      2770  syncthing  private-files  -  -"
+    "d  /srv/media/immich-ingest    2770  syncthing  private-files  -  -"
+  ];
+
   systemd.services.syncthing.serviceConfig = {
     ReadWritePaths = [
       "/var/lib/syncthing"

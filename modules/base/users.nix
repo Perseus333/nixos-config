@@ -6,7 +6,7 @@
   };
   users.users.non = {
     isNormalUser = true;
-    extraGroups = [ "wheel" ];
+    extraGroups = [ "wheel" "private-files" ];
     hashedPasswordFile = config.sops.secrets.non-pwd-hash.path;
     openssh.authorizedKeys.keys = [
       "sk-ssh-ed25519@openssh.com AAAAGnNrLXNzaC1lZDI1NTE5QG9wZW5zc2guY29tAAAAIO0nWPCSX+E6Ze1tyHUZABf4gkfTjcxs5fXuqy6EfoYkAAAABHNzaDo= perseus@mycenae"
@@ -27,8 +27,6 @@
     # Allows non to access the sops-key
     "d  /var/lib/sops-nix           0700  non  users          -  -"
 
-    "d  /srv/files                  2770  non  private-files  -  -"
-
     "d  /srv/media                  0755  non  users          -  -"
     "d  /srv/media/cinema           2770  non  media-public   -  -"
     "d  /srv/media/harmonics        2770  non  media-public   -  -"
@@ -39,5 +37,7 @@
 
     "d  /srv/media/gallery          2770  non  media-private  -  -"
     "d  /srv/media/immich-ingest    2770  non  media-private  -  -"
+
+    "d  /srv/files                  2770  non  private-files  -  -"
   ];
 }
