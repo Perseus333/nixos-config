@@ -12,6 +12,8 @@
     tokenKeyFile = config.sops.secrets."kavita-token".path;
   };
 
+  users.users.kavita.extraGroups = [ "media-public" ];
+
   systemd.tmpfiles.rules = [
     "d /var/lib/kavita      0750 non kavita -"
     "d /srv/media/grayscale 0750 non kavita -"

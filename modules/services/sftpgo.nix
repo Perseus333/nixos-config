@@ -34,4 +34,6 @@
       ban_limit = 3;
     };
   };
+
+  users.users.ytdl-sub.extraGroups = [ "private-files" ];
 }

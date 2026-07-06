@@ -4,6 +4,9 @@
   services.jellyfin = {
     enable = true;
   };
+
+  users.users.jellyfin.extraGroups =[ "media-public" ];
+
   environment.systemPackages = [
     pkgs.jellyfin
     pkgs.jellyfin-web

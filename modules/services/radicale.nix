@@ -7,7 +7,6 @@
 
   services.radicale = {
     enable = true;
-    port = config.ports.radicale;
     settings = {
       auth = {
         type = "htpasswd";

@@ -48,7 +48,7 @@
         # Add YouTube cookies to avoid bot captchas
         #cookiefile = "/srv/data/yt-dlp/cookies.txt";
         # Otherwise it tries writing to a directory it has no access to
-        cachedir = "/srv/data/yt-dlp/cache";
+        cachedir = "/var/lib/yt-dlp/cache";
         # Avoids it trying clients that are only used when no auth is provided
         #extractor_args = {
         #  youtube = {
@@ -91,5 +91,7 @@
     "d /srv/media/harmonics/general  0755 ytdl-sub ytdl-sub -"
     "d /srv/media/harmonics/classic  0755 ytdl-sub ytdl-sub -"
   ];
+
+  users.users.ytdl-sub.extraGroups = [ "media-public" ];
 }
 

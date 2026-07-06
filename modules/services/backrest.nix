@@ -14,6 +14,7 @@
     group = "backrest";
     home = "/var/lib/backrest";
     createHome = false;
+    extraGroups = [ "media-mod" ];
   };
   users.groups.backrest = {};
 

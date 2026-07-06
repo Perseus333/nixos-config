@@ -8,6 +8,7 @@ let
   };
 in
 {
+
   services.immich = {
     enable = true;
     host = "127.0.0.1";
@@ -30,7 +31,11 @@ in
     };
   };
 
-  users.users.immich.extraGroups = [ "video" "render" ];
+  users.users.immich.extraGroups = [
+    "media-private"
+    "video"
+    "render"
+  ];
 
   systemd.services.immich-server.serviceConfig.ReadWritePaths = [
     "/srv/media/gallery"
