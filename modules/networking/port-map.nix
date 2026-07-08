@@ -29,6 +29,7 @@
     open-webui    = 1212;
     immich        = 2283;
     forgejo       = 3000;
+    aint          = 4137;
     navidrome     = 4533;
     kavita        = 5000;
     radicale      = 5232;

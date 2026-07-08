@@ -6,7 +6,7 @@ in {
   caddy = {
     openFirewall = false;
     services = {
-      "ai"     = ports.open-webui;
+      "ai"     = ports.aint;
       "img"    = ports.immich;
       "git"    = ports.forgejo;
       "music"  = ports.navidrome;

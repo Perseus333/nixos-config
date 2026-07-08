@@ -24,6 +24,8 @@
       url = "github:nix-community/disko/";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    aint.url = "github:Perseus333/aint";
   };
 
   outputs = {
@@ -35,6 +37,7 @@
     deploy-rs,
     disko,
     impermanence,
+    aint,
     ...
   }@inputs:
     let
@@ -77,6 +80,8 @@
           disko.nixosModules.disko
 
           impermanence.nixosModules.impermanence
+
+          aint.nixosModules.default
         ];
       };
 

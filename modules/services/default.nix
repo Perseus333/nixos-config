@@ -2,6 +2,7 @@
 {
   # Eventually replace with custom cfg
   imports = [
+    ./aint.nix
     ./backrest.nix
     ./forgejo.nix
     ./glance.nix
@@ -9,7 +10,6 @@
     ./jellyfin.nix
     ./kavita.nix
     ./navidrome.nix
-    ./open-webui.nix
     ./radicale.nix
     ./searx.nix
     ./sftpgo.nix
