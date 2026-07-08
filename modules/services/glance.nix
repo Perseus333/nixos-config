@@ -64,20 +64,17 @@ in
                     { title = "Vaultwarden"; url = "https://vault.perseuslynx.dev/";        icon = "si:vaultwarden"; }
                     { title = "Radicale";    url = "https://cal.perseuslynx.dev/.web/";     icon = "sh:radicale-light"; }
                     { title = "Syncthing";   url = "https://sync.perseuslynx.dev/";         icon = "si:syncthing"; }
-                    { title = "Backrest";    url = "https://bak.perseuslynx.dev/";          icon = "sh:backrest-light"; alt-status-codes = [ 200 302 401 ];}
-                    { title = "Open WebUI";  url = "https://ai.perseuslynx.dev/";           icon = "sh:open-webui-light"; alt-status-codes = [ 200 302 401 ];}
+                    { title = "Backrest";    url = "https://bak.perseuslynx.dev/";          icon = "sh:backrest-light"; }
+                    { title = "AIn't";       url = "https://ai.perseuslynx.dev/";           icon = "sh:grok-light"; }
                     { title = "SFTPGo";      url = "https://files.perseuslynx.dev/";        icon = "sh:sftpgo-light"; }
                     { title = "Jellyfin";    url = "https://media.perseuslynx.dev/";        icon = "sh:jellyfin-light"; }
                     { title = "Forgejo";     url = "https://git.perseuslynx.dev/";          icon = "sh:forgejo-light"; }
                     { title = "SearXNG";     url = "https://search.perseuslynx.dev/";       icon = "sh:searxng-light"; }
                     { title = "Glance";      url = "https://home.perseuslynx.dev/";         icon = "sh:glance-light"; }
-                    { title = "NGINX";       url = "https://perseuslynx.dev/";              icon = "sh:nginx-light"; }
+                    { title = "Website";     url = "https://perseuslynx.dev/";              icon = "sh:github-light"; }
                     { title = "Immich";      url = "https://img.perseuslynx.dev/";          icon = "sh:immich-light"; }
                     { title = "Navidrome";   url = "https://music.perseuslynx.dev/";        icon = "sh:navidrome-light"; }
                     { title = "Kavita";      url = "https://books.perseuslynx.dev/";        icon = "sh:kavita-light"; }
-                  # { title = "Authelia";    url = "https://auth.perseuslynx.dev/";         icon = "sh:authelia-light"; }
-                  # { title = "Pi-hole";     url = "https://pihole.perseuslynx.dev/admin/"; icon = "si:pi-hole"; }
-                  # { title = "Calibre";     url = "https://books.perseuslynx.dev/";        icon = "sh:calibre-web-light"; }
                   ];
                 }
               ];
