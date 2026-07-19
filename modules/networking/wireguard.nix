@@ -18,6 +18,10 @@ let
     "oifname \"wg0\" ip daddr ${dst} ${p.proto} dport ${toString (backendPort p)} masquerade"
   ) cfg.zones.publicPorts);
 
+  forwardRules = lib.concatStringsSep "\n      " (map (p:
+    "iifname \"${ext}\" oifname \"wg0\" ip daddr ${dst} ${p.proto} dport ${toString (backendPort p)} accept"
+  ) cfg.zones.publicPorts);
+
 in {
 
   imports = [
@@ -51,6 +55,13 @@ in {
           chain postrouting {
             type nat hook postrouting priority srcnat; policy accept;
             ${masqRules}
+          }
+
+          # Foward only what's strictly allowed, drop all else
+          chain forward {
+            type filter hook forward priority filter; policy drop;
+            ct state established,related accept
+            ${forwardRules}
           }
         '';
       };

@@ -11,9 +11,6 @@ The following ports should be enabled in the VPS firewall:
 |1558|UDP|Wireguard|
 |53|TCP|DNS|
 |53|UDP|DNS|
-|80|TCP|HTTP|
-|443|TCP|HTTPS|
-|25565|UDP|Minecraft|
 
 You may also want to enable, during setup only port 22 and 4684, UDP for initial SSH access when wireguard is not enabled. Remember to close them afterwards even though the firewall policies in NixOS block them.
 

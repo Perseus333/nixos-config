@@ -11,7 +11,6 @@ in {
     publicPorts = [
       { port = ports.dns; proto = "tcp"; targetPort = ports.acme-dns; }
       { port = ports.dns; proto = "udp"; targetPort = ports.acme-dns; }
-      { port = ports.minecraft; proto = "tcp";  }
     ];
 
     # Devices in the LAN or WireGuard
