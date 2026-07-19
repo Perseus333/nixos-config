@@ -15,6 +15,5 @@
     ./sftpgo.nix
     ./syncthing.nix
     ./vaultwarden.nix
-    ./ytdl-sub.nix
   ];
 }
