@@ -2,7 +2,7 @@
 
 {
   imports = [
-    #./hardening-assignments.nix
+    ./hardening-assignments.nix
     ./hardware.nix
     ./wireguard.nix
     ../../modules/base

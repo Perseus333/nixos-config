@@ -204,6 +204,38 @@ null
 *Declared by:*
  - modules/networking/firewall-zones\.nix
 
+## ivy\.hardening\.enable
+
+Whether to enable custom service hardening\.
+
+*Type:*
+boolean
+
+*Default:*
+
+```nix
+true
+```
+
+*Declared by:*
+ - modules/base/hardening-profiles\.nix
+
+## ivy\.hardening\.services
+
+Attrset of service names mapped to profiles besides base
+
+*Type:*
+attribute set of list of (one of “lowPortBinding”, “netAdmin”, “offline”, “stateless”, “unManagedUsers”, “usesJIT”, “usesNspawn”)
+
+*Default:*
+
+```nix
+{ }
+```
+
+*Declared by:*
+ - modules/base/hardening-profiles\.nix
+
 ## ivy\.roles\.relay\.enable
 
 Whether to enable Public relay role\. Forwards traffic to the server…

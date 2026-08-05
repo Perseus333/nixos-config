@@ -41,7 +41,7 @@
 
       AmbientCapabilities  = [ "CAP_DAC_READ_SEARCH" ];
       CapabilityBoundingSet = [ "CAP_DAC_READ_SEARCH" ];
-      ProtectHome          = false;
+      ProtectHome          = "read-only";
       ReadWritePaths       = [ "/var/lib/backrest" "/mnt/backup" ];
       MemoryDenyWriteExecute   = false; 
     };
