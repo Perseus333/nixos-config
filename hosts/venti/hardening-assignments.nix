@@ -7,7 +7,6 @@
     aint                    = [ "stateless" "usesNspawn" ];
     # backrest              = # custom pkg, individual hardening
     caddy                   = [ "stateless" "lowPortBinding" ];
-    fail2ban                = [ "netAdmin" ];
     forgejo                 = [ ];
     glance                  = [ "stateless" "usesNspawn" ];
     immich-machine-learning = [ "usesJIT" ];
@@ -21,7 +20,7 @@
     redis-searx             = [ "stateless" ];
     searx-init              = [ "unManagedUsers" ];
     sftpgo                  = [ "unManagedUsers" ];
-    syncthing               = [ ];
+    syncthing               = [ "preserveGUID" ];
     syncthing-init          = [ "stateless" ];
     # unbound               = [ "lowPortBinding" ];
     vaultwarden             = [ ];

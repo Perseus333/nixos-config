@@ -224,6 +224,11 @@ let
       PrivateUsers = lib.mkForce "self";
     };
 
+    preserveGUID = {
+      # When the U/GID needs to be preserved
+      PrivateUsers = lib.mkForce "identity";
+    };
+
     lowPortBinding = {
       # Allows binding to ports lower than 1024
       CapabilityBoundingSet = "CAP_NET_BIND_SERVICE";

@@ -27,6 +27,7 @@
     # Allows non to access the sops-key
     "d  /var/lib/sops-nix           0700  non  users          -  -"
 
+    # Automatic ownership for new files
     "d  /srv/media                  0755  non  users          -  -"
     "d  /srv/media/cinema           2770  non  media-public   -  -"
     "d  /srv/media/harmonics        2770  non  media-public   -  -"
@@ -39,5 +40,18 @@
     "d  /srv/media/immich-ingest    2770  non  media-private  -  -"
 
     "d  /srv/files                  2770  non  private-files  -  -"
+
+    # ACL perms to offset UMASK service hardening
+    "a+ /srv/media/cinema           - - - - default:group:media-public:rwx"
+    "a+ /srv/media/harmonics        - - - - default:group:media-public:rwx"
+    "a+ /srv/media/lectern          - - - - default:group:media-public:rwx"
+    "a+ /srv/media/grayscale        - - - - default:group:media-public:rwx"
+    "a+ /srv/media/genshin          - - - - default:group:media-public:rwx"
+    "a+ /srv/media/misc             - - - - default:group:media-public:rwx"
+
+    "a+ /srv/media/gallery          - - - - default:group:media-private:rwx"
+    "a+ /srv/media/immich-ingest    - - - - default:group:media-private:rwx"
+
+    "a+ /srv/files                  - - - - default:group:private-files:rwx"
   ];
 }
