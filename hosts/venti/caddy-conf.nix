@@ -19,6 +19,7 @@ in {
       "search" = ports.searxng;
       "sync"   = ports.syncthing;
       "bak"    = ports.backrest;
+      "todo"   = ports.vikunja;
     };
   };
 }

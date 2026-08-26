@@ -75,6 +75,7 @@ in
                     { title = "Immich";      url = "https://img.perseuslynx.dev/";          icon = "sh:immich-light"; }
                     { title = "Navidrome";   url = "https://music.perseuslynx.dev/";        icon = "sh:navidrome-light"; }
                     { title = "Kavita";      url = "https://books.perseuslynx.dev/";        icon = "sh:kavita-light"; }
+                    { title = "Vikunja";     url = "https://todo.perseuslynx.dev/";         icon = "sh:vikunja-light"; }
                   ];
                 }
               ];

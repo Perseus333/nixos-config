@@ -3,7 +3,6 @@
 {
   ivy.hardening.services = {
     # By default all contain default settings
-    acme-dns                = [ "stateless" "usesNspawn" ];
     aint                    = [ "stateless" "usesNspawn" ];
     # backrest              = # custom pkg, individual hardening
     caddy                   = [ "stateless" "lowPortBinding" ];
@@ -24,6 +23,7 @@
     syncthing-init          = [ "stateless" ];
     # unbound               = [ "lowPortBinding" ];
     vaultwarden             = [ ];
+    vikunja                 = [ "stateless" "usesNspawn" ];
     # wireguard             = [ "netAdmin" ];
   };
 }

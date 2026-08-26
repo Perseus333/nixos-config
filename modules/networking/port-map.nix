@@ -35,6 +35,7 @@
     radicale      = 5232;
     glance        = 5678;
     sftpgo-web    = 5779;
+    vikunja       = 6593;
     jellyfin      = 8096;
     vaultwarden   = 8222;
     syncthing     = 8384;

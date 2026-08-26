@@ -73,6 +73,7 @@
           ''"home.perseuslynx.dev. IN A 10.8.0.1"''
           ''"music.perseuslynx.dev. IN A 10.8.0.1"''
           ''"books.perseuslynx.dev. IN A 10.8.0.1"''
+          ''"todo.perseuslynx.dev. IN A 10.8.0.1"''
         ];
       };
       forward-zone = {

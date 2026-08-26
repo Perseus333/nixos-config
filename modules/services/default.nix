@@ -15,5 +15,6 @@
     ./sftpgo.nix
     ./syncthing.nix
     ./vaultwarden.nix
+    ./vikunja.nix
   ];
 }
