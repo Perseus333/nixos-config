@@ -9,8 +9,7 @@ in {
     # Relay: open everywhere
     # Server: open in wg0, and to LAN IPs
     publicPorts = [
-      { port = ports.dns; proto = "tcp"; targetPort = ports.acme-dns; }
-      { port = ports.dns; proto = "udp"; targetPort = ports.acme-dns; }
+      # Keep empty as much as possible
     ];
 
     # Devices in the LAN or WireGuard
