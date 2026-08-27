@@ -16,47 +16,49 @@
     overrideDevices = true;
     overrideFolders = true;
 
-    settings.guiAddress = "0.0.0.0:${ toString config.ports.syncthing}";
-    settings.gui = {
-      user = "perseus";
-      passwordFile = config.sops.secrets."syncthing-pwd".path;
-      options = {
-	natEnabled = false;
-	urAccepted = -1;
+    settings = {
+      guiAddress = "0.0.0.0:${ toString config.ports.syncthing}";
+      gui = {
+        user = "perseus";
+        passwordFile = config.sops.secrets."syncthing-pwd".path;
+        options = {
+          natEnabled = false;
+          urAccepted = -1;
+        };
+        insecureSkipHostcheck = true;
       };
-      insecureSkipHostcheck = true;
-    };
 
-    devices = {
-      "LTP" = { id = "OF7MA2O-6MCO5BX-K5IBMX2-KSTRE24-YZQKFWE-SVAURYS-GMZBEVT-2CFVMAX"; };
-      "MBL" = { id = "D5MIWDK-BZGZHBR-ZXZM3JP-P2D56SB-DYVLXE5-K4NCZ7H-Y3Q2RIQ-GBWLYQV"; };
-    };
+      devices = {
+        "LTP" = { id = "OF7MA2O-6MCO5BX-K5IBMX2-KSTRE24-YZQKFWE-SVAURYS-GMZBEVT-2CFVMAX"; };
+        "MBL" = { id = "D5MIWDK-BZGZHBR-ZXZM3JP-P2D56SB-DYVLXE5-K4NCZ7H-Y3Q2RIQ-GBWLYQV"; };
+      };
 
-    folders = {
-      # LTP Backup: Essential files
-      "hot-storage" = {
-        path = "/srv/files/hot-storage"; 
-        devices = [ "LTP" ];
-        type = "receiveonly"; 
-      };
-      # LTP Backup: Screenshots
-      "ltp-screenshots" = {
-        path = "/srv/media/immich-ingest/ltp-screenshots";
-        devices = [ "LTP" ];
-        type = "receiveonly";
-      };
-      # LTP Backup: Wallpapers
-      "ltp-wallpapers" = {
-        path = "/srv/media/immich-ingest/ltp-wallpapers";
-        devices = [ "LTP" ];
-        type = "receiveonly";
-      };
-      # MBL Backup: Music
-      "mbl-music" = {
-        path = "/srv/media/harmonics";
-        devices = [ "MBL" ];
-        type = "receiveonly";
-        ignoreDelete = true;
+      folders = {
+        # LTP Backup: Essential files
+        "hot-storage" = {
+          path = "/srv/files/hot-storage"; 
+          devices = [ "LTP" ];
+          type = "receiveonly"; 
+        };
+        # LTP Backup: Screenshots
+        "ltp-screenshots" = {
+          path = "/srv/media/immich-ingest/ltp-screenshots";
+          devices = [ "LTP" ];
+          type = "receiveonly";
+        };
+        # LTP Backup: Wallpapers
+        "ltp-wallpapers" = {
+          path = "/srv/media/immich-ingest/ltp-wallpapers";
+          devices = [ "LTP" ];
+          type = "receiveonly";
+        };
+        # MBL Backup: Music
+        "mbl-music" = {
+          path = "/srv/media/harmonics";
+          devices = [ "MBL" ];
+          type = "receiveonly";
+          ignoreDelete = true;
+        };
       };
     };
   };
