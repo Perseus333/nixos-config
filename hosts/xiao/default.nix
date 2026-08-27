@@ -1,4 +1,4 @@
-{ config, lib, pkgs, inputs, ... }:
+{ config, lib, pkgs, inputs, secrets, ... }:
 
 {
   imports = [
@@ -11,6 +11,13 @@
 
   # This configures most stuff
   ivy.roles.relay.enable = true;
+
+  sops.secrets.non-xiao-pwd-hash = {
+    neededForUsers = true;
+    sopsFile = "${secrets}/hosts/xiao.yaml";
+  };
+
+  users.users.non.hashedPasswordFile = config.sops.secrets.non-xiao-pwd-hash.path;
 
   #sops.secrets.xiao-nix-signing-key = {
   #  owner = "root";

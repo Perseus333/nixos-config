@@ -1,4 +1,4 @@
-{ config, lib, pkgs, inputs, ... }:
+{ config, lib, pkgs, inputs, secrets, ... }:
 
 {
   imports = [
@@ -22,6 +22,13 @@
     };
     zfs.enable = true;
   };
+
+  sops.secrets.non-venti-pwd-hash = {
+    neededForUsers = true;
+    sopsFile = "${secrets}/hosts/venti.yaml";
+  };
+
+  users.users.non.hashedPasswordFile = config.sops.secrets.non-venti-pwd-hash.path;
 
   # Host identification
   networking = {
