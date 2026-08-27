@@ -26,6 +26,7 @@
     age
     sops
     home-manager
+    ssh-to-age
 
     # QOL
     unzip

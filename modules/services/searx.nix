@@ -1,7 +1,8 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, secrets, ... }:
 
 {
   sops.secrets."searx-env" = {
+    sopsFile = "${secrets}/services/searx.yaml";
     owner = "searx";
   };
 

@@ -1,6 +1,6 @@
 { config, lib, secrets, ... }:
 let
-  wg-secrets = "${secrets}/services/wireguard.yaml";
+  wg-secrets = "${secrets}/hosts/xiao.yaml";
 
   secret-names = [
     "wg-xiao-private-key"
@@ -14,6 +14,7 @@ let
 in
 {
   sops.secrets = lib.genAttrs secret-names (name: { sopsFile = wg-secrets; });
+  sops.secrets.wg-venti-xiao-psk  = { sopsFile = "${secrets}/shared/xiao-venti.yaml"; };
 
   networking.wireguard.interfaces.wg0 = {
     ips = [ "10.8.0.5/24" ];

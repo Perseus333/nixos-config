@@ -1,8 +1,9 @@
-{config, lib, pkgs, ...}:
+{config, lib, secrets, ...}:
 
 {
   sops.secrets."kavita-token" = {
     owner = "kavita";
+    sopsFile = "${secrets}/services/kavita.yaml";
   };
 
   services.kavita = {

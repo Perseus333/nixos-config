@@ -1,10 +1,8 @@
 { config, lib, secrets, ... }:
-let
-  wg-secrets = "${secrets}/services/wireguard.yaml";
-in
+
 {
-  sops.secrets.wg-venti-private-key = { sopsFile = "${wg-secrets}"; };
-  sops.secrets.wg-venti-xiao-psk  = { sopsFile = "${wg-secrets}"; };
+  sops.secrets.wg-venti-private-key = { sopsFile = "${secrets}/hosts/venti.yaml"; };
+  sops.secrets.wg-venti-xiao-psk  = { sopsFile = "${secrets}/shared/xiao-venti.yaml"; };
 
   networking.wireguard.interfaces = {
     wg0 = {

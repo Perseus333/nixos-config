@@ -1,8 +1,9 @@
-{ config, lib, pkgs, ... }:
+{ config, secrets, ... }:
 
 {
   sops.secrets."vaultwarden-env" = {
     owner = config.users.users.vaultwarden.name;
+    sopsFile = "${secrets}/services/vaultwarden.yaml";
   };
   
   services.vaultwarden = {

@@ -1,7 +1,8 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, secrets, ... }:
 {
   sops.secrets."syncthing-pwd" = {
     owner = "syncthing";
+    sopsFile = "${secrets}/services/syncthing.yaml";
   };
 
   users.users.syncthing.extraGroups = [

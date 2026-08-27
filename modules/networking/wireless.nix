@@ -1,12 +1,17 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, secrets, ... }:
 
+let
+  wifiSecretsFile = "${secrets}/shared/wifi-pwds.yaml";
+  secretNames = [
+    "wifi-ssid-1" "wifi-psk-1"
+    "wifi-ssid-2" "wifi-psk-2"
+    "wifi-ssid-3" "wifi-psk-3"
+  ];
+in
 {
-  sops.secrets."wifi-ssid-1" = {};
-  sops.secrets."wifi-psk-1" = {};
-  sops.secrets."wifi-ssid-2" = {};
-  sops.secrets."wifi-psk-2" = {};
-  sops.secrets."wifi-ssid-3" = {};
-  sops.secrets."wifi-psk-3" = {};
+  sops.secrets = lib.genAttrs secretNames (name: {
+    sopsFile = wifiSecretsFile;
+  });
 
   sops.templates."wireless-secrets" = {
     content = ''

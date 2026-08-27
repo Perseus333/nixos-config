@@ -1,8 +1,9 @@
-{ config, lib, pkgs, ...}:
+{ config, secrets, ...}:
 
 {
   sops.secrets."radicale-creds" = {
     owner = "radicale";
+    sopsFile = "${secrets}/services/radicale.yaml";
   };
 
   services.radicale = {
