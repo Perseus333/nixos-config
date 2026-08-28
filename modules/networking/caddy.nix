@@ -43,6 +43,8 @@ in {
     systemd.services.caddy.serviceConfig = {
       AmbientCapabilities   = lib.mkForce [ "CAP_NET_BIND_SERVICE" ];
       CapabilityBoundingSet = lib.mkForce [ "CAP_NET_BIND_SERVICE" ];
+      WorkingDirectory = "/var/lib/caddy";
+      Environment = [ "XDG_CONFIG_HOME=/var/lib/caddy" ];
     };
   };
 }

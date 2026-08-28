@@ -225,7 +225,7 @@ true
 Attrset of service names mapped to profiles besides base
 
 *Type:*
-attribute set of list of (one of “lowPortBinding”, “netAdmin”, “offline”, “preserveGUID”, “stateless”, “unManagedUsers”, “usesJIT”, “usesNspawn”)
+attribute set of list of (one of “lowPortBinding”, “needsInternet”, “needsProc”, “netAdmin”, “offline”, “preserveGUID”, “stateless”, “unManagedUsers”, “usesJIT”, “usesNspawn”)
 
 *Default:*
 

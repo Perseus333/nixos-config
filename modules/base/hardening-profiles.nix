@@ -177,6 +177,11 @@ let
       # /dev/null, (u)random, zero, full
       DevicePolicy = "closed";
 
+      # Restricts communication over IP to just:
+      # Local loopback: 127.0.0.0/8 ::1/128
+      IPAddressAllow = "localhost";
+      IPAddressDeny = "any";
+
       # TODO: Potential future research: automating FileImage container generation
     };
 
@@ -242,6 +247,16 @@ let
       # Disables Write XOR Execute
       # Would cause issues with services that rely on JIT
       MemoryDenyWriteExecute = false;
+    };
+
+    needsInternet = {
+      # Allows access to any IP address
+      IPAddressAllow = lib.mkForce [ "any" ];
+    };
+
+    needsProc = {
+      # Allows full access to /proc
+      ProcSubset = lib.mkForce "all";
     };
   };
 
