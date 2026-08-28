@@ -19,11 +19,8 @@
         extraDomainNames = [ "perseuslynx.dev" ];
         dnsProvider      = "porkbun";
         dnsPropagationCheck = true;
-        credentialFiles = {
-          "PORKBUN_API_KEY_FILE"        = config.sops.secrets.porkbun-dns-token.path;
-          "PORKBUN_SECRET_API_KEY_FILE" = config.sops.secrets.porkbun-dns-token.path;
-        };
-        group            = "caddy";
+        environmentFile = config.sops.secrets.porkbun-dns-token.path;
+        group = "caddy";
       };
     };
   };
