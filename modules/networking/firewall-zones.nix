@@ -33,24 +33,73 @@ in {
 
   options.ivy.firewall-zones = {
 
+    # Server-specific config
+    server = {
+      endpointInterface = lib.mkOption {
+        type = lib.types.str;
+        default = "wg-int";
+        description = ''
+          Wireguard interface name of endpoint client-server link.
+          Should be different than relay.backboneInterface.
+        '';
+      };
+    };
+
     # Relay-specific config for port forwarding
     relay = {
       target = lib.mkOption {
         type        = lib.types.str;
-        default     = "10.8.0.1";
+        default     = "10.8.1.1";
         description = "WireGuard IP of the server that publicPorts are forwarded to.";
       };
+
       externalInterface = lib.mkOption {
         type        = lib.types.str;
         default     = "ens6";
         description = "Public-facing NIC on the relay host.";
+      };
+
+      backboneInterface = lib.mkOption {
+        type = lib.types.str;
+        default = "wg-bbn";
+        description = ''
+          Wireguard interface name of private server-relay link.
+          Should be different than server.endpointInterface.
+        '';
+      };
+
+      backbonePort = lib.mkOption {
+        type    = lib.types.port;
+        default = config.ports.wireguard;
+        description = "UDP port at the relay which forwards WG packets to the server.";
+      };
+
+      backboneTunnelPort = lib.mkOption {
+        type = lib.types.port;
+        default = 1559;
+        description = "UDP port through which the tunnel of the backbone happens";
+      };
+
+      adminInterface = lib.mkOption {
+        type = lib.types.str;
+        default = "wg-adm";
+        description = ''
+          Wireguard interface name to perform admin tasks (eg. SSH) on the relay.
+          Does not get forwarded to Xiao
+        '';
+      };
+
+      adminPort = lib.mkOption {
+        type = lib.types.port;
+        default = 2026;
+        description = "Port on which adminInterface listens on.";
       };
     };
 
     zones = {
       # ZONE: PUBLIC
       # Relay:  accept from any interface
-      # Server: accept on wg0 using targetPort
+      # Server: accept on backboneInterface without client validation
       publicPorts = lib.mkOption {
         type    = lib.types.listOf portEntry;
         default = [];
@@ -59,7 +108,7 @@ in {
 
       # ZONE: LAN
       # Relay:  not involved
-      # Server: accept on wg0 + from IPv4 LAN addresses
+      # Server: accept on wireguard + from IPv4 LAN addresses
       lanPorts = lib.mkOption {
         type    = lib.types.listOf portEntry;
         default = [];
@@ -67,7 +116,8 @@ in {
       };
 
       # ZONE: WIREGUARD ONLY
-      # Both roles: accept on wg0 only.
+      # Relay: accept on relay.wireguardPort
+      # Server: accept only through wireguard
       wgOnlyPorts = lib.mkOption {
         type    = lib.types.listOf portEntry;
         default = [];
@@ -94,10 +144,18 @@ in {
     (lib.mkIf roles.server.enable {
       networking.firewall = {
 
-        interfaces.wg0 = {
-          # The server opens all specified target ports on wg0
-          allowedTCPPorts = lib.unique (tcpPorts (z.publicPorts ++ z.lanPorts ++ z.wgOnlyPorts));
-          allowedUDPPorts = lib.unique (udpPorts (z.publicPorts ++ z.lanPorts ++ z.wgOnlyPorts));
+        # Ports allowed on venti through the endpoint interface
+        # Intended for wg clients
+        interfaces.${cfg.server.endpointInterface} = {
+          allowedTCPPorts = lib.unique (tcpPorts (z.lanPorts ++ z.wgOnlyPorts));
+          allowedUDPPorts = lib.unique (udpPorts (z.lanPorts ++ z.wgOnlyPorts));
+        };
+
+        # Ports allowed on xiao via the backbone interface
+        # Intended for wg clients + public services to be relayed
+        interfaces.${cfg.relay.backboneInterface} = {
+          allowedTCPPorts = lib.unique (tcpPorts z.publicPorts);
+          allowedUDPPorts = lib.unique (udpPorts z.publicPorts) ++ [ cfg.relay.backbonePort ];
         };
 
         # Open lanPorts inside the LAN
@@ -111,9 +169,16 @@ in {
 
     # RELAY settings: Xiao
     (lib.mkIf roles.relay.enable {
+      # Open backbone and admin WG ports in the relay to accept incoming connections 
       networking.firewall = {
-        # Only SSH needs to be open on wg0 since the other ports are forwarded
-        interfaces.wg0.allowedTCPPorts = [ config.ports.ssh ];
+        interfaces.${cfg.relay.externalInterface}.allowedUDPPorts = [
+          cfg.relay.backbonePort
+          cfg.relay.backboneTunnelPort
+          cfg.relay.adminPort
+        ];
+
+        # The adminInterface is just to enable SSH to the relay
+        interfaces.${cfg.relay.adminInterface}.allowedTCPPorts = [ config.ports.ssh ];
       };
     })
   ];
